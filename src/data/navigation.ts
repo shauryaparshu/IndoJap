@@ -322,8 +322,7 @@ export const NAVIGATION_DEMO_2: NavItemType[] = [
   {
     id: randomId(),
     href: "/",
-    name: "Homes",
-    type: "dropdown",
+    name: "Home",
     children: [
       { id: randomId(), href: "/", name: "Home page 1" },
       { id: randomId(), href: "/home-2", name: "Home page 2" },
@@ -339,9 +338,8 @@ export const NAVIGATION_DEMO_2: NavItemType[] = [
   // single pages ----------------
   {
     id: randomId(),
-    href: "/single/demo-slug" as Route,
-    name: "Singles",
-    type: "dropdown",
+    href: "/archive/demo-slug" as Route,
+    name: "Events",
     children: [
       {
         id: randomId(),
@@ -382,31 +380,29 @@ export const NAVIGATION_DEMO_2: NavItemType[] = [
       },
     ],
   },
-
   //
   {
     id: randomId(),
-    href: "/archive/demo-slug" as Route,
-    name: "Beauty",
+    href: "/single/demo-slug" as Route,
+    name: "Blogs",
   },
 
   {
     id: randomId(),
-    href: "/archive/demo-slug" as Route,
-    name: "Sport",
+    href: "/single-gallery/demo-slug" as Route,
+    name: "Study In Japan",
   },
   {
     id: randomId(),
-    href: "/search",
-    name: "Templates",
-    type: "megaMenu",
-    children: MEGAMENU_TEMPLATES,
+    href: "/about",
+    name: "About Us",
+    children: OTHER_PAGE_CHILD,
   },
   {
     id: randomId(),
     href: "/search",
     name: "Explore",
-    type: "dropdown",
-    children: OTHER_PAGE_CHILD,
+    type: "megaMenu",
+    children: MEGAMENU_TEMPLATES,
   },
 ];

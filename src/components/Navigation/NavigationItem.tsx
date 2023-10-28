@@ -193,9 +193,7 @@ const NavigationItem: FC<NavigationItemProps> = ({ menuItem }) => {
               >
                 <ul className="rounded-2xl shadow-lg ring-1 ring-black ring-opacity-5 dark:ring-white dark:ring-opacity-10 text-sm relative bg-white dark:bg-neutral-900 py-4 grid space-y-1">
                   {menuDropdown.children?.map((i) => {
-                    if (i.type) {
-                      return renderDropdownMenuNavlinkHasChild(i);
-                    } else {
+                    
                       return (
                         <li
                           key={i.id}
@@ -204,7 +202,7 @@ const NavigationItem: FC<NavigationItemProps> = ({ menuItem }) => {
                           {renderDropdownMenuNavlink(i)}
                         </li>
                       );
-                    }
+                    
                   })}
                 </ul>
               </Popover.Panel>
@@ -215,55 +213,7 @@ const NavigationItem: FC<NavigationItemProps> = ({ menuItem }) => {
     );
   };
 
-  const renderDropdownMenuNavlinkHasChild = (item: NavItemType) => {
-    const isHover = menuCurrentHovers.includes(item.id);
-    return (
-      <Popover
-        as="li"
-        key={item.id}
-        className="menu-item menu-dropdown relative px-2"
-        onMouseEnter={() => onMouseEnterMenu(item.id)}
-        onMouseLeave={() => onMouseLeaveMenu(item.id)}
-      >
-        {() => (
-          <>
-            <Popover.Button as={Fragment}>
-              {renderDropdownMenuNavlink(item)}
-            </Popover.Button>
-            <Transition
-              as={Fragment}
-              show={isHover}
-              enter="transition ease-out duration-150"
-              enterFrom="opacity-0 translate-y-1"
-              enterTo="opacity-100 translate-y-0"
-              leave="transition ease-in duration-150"
-              leaveFrom="opacity-100 translate-y-0"
-              leaveTo="opacity-0 translate-y-1"
-            >
-              <Popover.Panel
-                static
-                className="sub-menu absolute z-10 w-56 left-full pl-2 top-0"
-              >
-                <ul className="rounded-xl shadow-lg ring-1 ring-black ring-opacity-5 dark:ring-white dark:ring-opacity-10 text-sm relative bg-white dark:bg-neutral-900 py-4 grid space-y-1">
-                  {item.children?.map((i) => {
-                    if (i.type) {
-                      return renderDropdownMenuNavlinkHasChild(i);
-                    } else {
-                      return (
-                        <li key={i.id} className="px-2">
-                          {renderDropdownMenuNavlink(i)}
-                        </li>
-                      );
-                    }
-                  })}
-                </ul>
-              </Popover.Panel>
-            </Transition>
-          </>
-        )}
-      </Popover>
-    );
-  };
+ 
 
   const renderDropdownMenuNavlink = (item: NavItemType) => {
     return (
@@ -309,11 +259,16 @@ const NavigationItem: FC<NavigationItemProps> = ({ menuItem }) => {
   switch (menuItem.type) {
     case "dropdown":
       return renderDropdownMenu(menuItem);
+      // return (
+      //   <li className="menu-item flex-shrink-0">test</li>
+      // )
     case "megaMenu":
       return renderMegaMenu(menuItem);
     default:
       return (
         <li className="menu-item flex-shrink-0">{renderMainItem(menuItem)}</li>
+        // <li className="menu-item flex-shrink-0">test</li>
+        
       );
   }
 };

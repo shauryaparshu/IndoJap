@@ -183,12 +183,12 @@ const NavMobile: React.FC<NavMobileProps> = ({
           <ButtonClose onClick={onClickClose} />
         </span>
 
-        <div className="mt-5">{renderSearchForm()}</div>
+        {/* <div className="mt-5">{renderSearchForm()}</div> */}
       </div>
       <ul className="flex flex-col py-6 px-2 space-y-1 rtl:space-x-reverse">
         {data.map(_renderItem)}
       </ul>
-      <div className="flex items-center justify-between py-6 px-5 space-x-2 rtl:space-x-reverse">
+      {/* <div className="flex items-center justify-between py-6 px-5 space-x-2 rtl:space-x-reverse">
         <ButtonPrimary className="!px-10 relative">
           Buy this template
           <a
@@ -198,7 +198,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
             className="absolute inset-0"
           ></a>
         </ButtonPrimary>
-      </div>
+      </div> */}
     </div>
   );
 };
