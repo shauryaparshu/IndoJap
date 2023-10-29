@@ -7,6 +7,8 @@ import AvatarDropdown from "./AvatarDropdown";
 import Navigation from "@/components/Navigation/Navigation";
 import SearchModal from "./SearchModal";
 import NotifyDropdown from "./NotifyDropdown";
+import SwitchDarkMode from "../SwitchDarkMode/SwitchDarkMode";
+import Button from "../Button/Button";
 
 export interface MainNav2LoggedProps {}
 
@@ -26,11 +28,32 @@ const MainNav2Logged: FC<MainNav2LoggedProps> = () => {
           <Navigation />
         </div>
 
-        <div className="flex-1 flex items-center justify-end text-slate-700 dark:text-slate-100">
+     {/* Before login  */}
+        <div className="flex-1 flex items-center justify-end text-neutral-700 dark:text-neutral-100 space-x-1 rtl:space-x-reverse">
+            <div className="hidden items-center lg:flex">
+              <SwitchDarkMode />
+              <SearchModal />
+              <div className="px-1"></div>
+              <Button
+                sizeClass="py-3 px-4 sm:px-6"
+                href="/login"
+                pattern="primary"
+              >
+                Sign up
+              </Button>
+            </div>
+            <div className="flex items-center lg:hidden">
+              <SwitchDarkMode />
+              <SearchModal />
+            </div>
+          </div>
+        {/* After login update in future */}
+        {/* <div className="flex-1 flex items-center justify-end text-slate-700 dark:text-slate-100">
           <SearchModal />
           <NotifyDropdown />
           <AvatarDropdown />
-        </div>
+        </div> */}
+
       </div>
     );
   };
