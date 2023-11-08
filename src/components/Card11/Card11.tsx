@@ -1,4 +1,4 @@
-"use client";
+"use client"; 
 
 import React, { FC, useState } from "react";
 import PostCardSaveAction from "@/components/PostCardSaveAction/PostCardSaveAction";
@@ -49,7 +49,7 @@ const Card11: FC<Card11Props> = ({
         {!hiddenAuthor ? (
           <PostCardMeta meta={post} />
         ) : (
-          <span className="text-xs text-neutral-500">{date}</span>
+          <span className="text-xs text-neutral-500 ">{date}</span>
         )}
         <h3 className="nc-card-title block text-base font-semibold text-neutral-900 dark:text-neutral-100">
           <span className="line-clamp-2" title={title}>

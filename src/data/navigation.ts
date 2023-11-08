@@ -11,13 +11,8 @@ export const MEGAMENU_TEMPLATES: NavItemType[] = [
     href: "/#",
     name: "Home Page",
     children: [
-      { id: randomId(), href: "/", name: "Home page 1" },
-      { id: randomId(), href: "/home-2", name: "Home page 2" },
-      { id: randomId(), href: "/home-3", name: "Home page 3" },
-      { id: randomId(), href: "/home-4", name: "Home page 4" },
-      { id: randomId(), href: "/home-6", name: "Home page 5" },
+      { id: randomId(), href: "/", name: "Home page 3" },
       { id: randomId(), href: "/", name: "Header style 1", isNew: true },
-      { id: randomId(), href: "/home-2", name: "Header style 2", isNew: true },
     ],
   },
 
@@ -324,21 +319,15 @@ export const NAVIGATION_DEMO_2: NavItemType[] = [
     href: "/",
     name: "Home",
     children: [
-      { id: randomId(), href: "/", name: "Home page 1" },
-      { id: randomId(), href: "/home-2", name: "Home page 2" },
-      { id: randomId(), href: "/home-3", name: "Home page 3" },
-      { id: randomId(), href: "/home-4", name: "Home page 4" },
-      { id: randomId(), href: "/home-6", name: "Home page 5" },
-      { id: randomId(), href: "/", name: "Header style 1", isNew: true },
-      { id: randomId(), href: "/home-2", name: "Header style 2", isNew: true },
-      { id: randomId(), href: "/home-3", name: "Header style 3" },
+      { id: randomId(), href: "/", name: "Home page 3" },
+      { id: randomId(), href: "/", name: "Header style 1", isNew: true }
     ],
   },
 
   // single pages ----------------
   {
     id: randomId(),
-    href: "/archive/demo-slug" as Route,
+    href: "/events" as Route,
     name: "Events",
     children: [
       {
