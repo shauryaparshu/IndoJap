@@ -32,7 +32,7 @@ const PageSignUp = ({}) => {
       <header className="text-center max-w-2xl mx-auto - mb-14 sm:mb-16 lg:mb-20">
         <Heading2>Sign up</Heading2>
         <span className="block text-sm mt-2 text-neutral-700 sm:text-base dark:text-neutral-200">
-          Welcome to our blog magazine Community
+         Welcome, Join our IndoJap Community
         </span>
       </header>
 

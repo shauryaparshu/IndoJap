@@ -11,6 +11,7 @@ import SocialsList from "@/components/SocialsList/SocialsList";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import SwitchDarkMode from "@/components/SwitchDarkMode/SwitchDarkMode";
 import Link from "next/link";
+import Button from "../Button/Button";
 
 export interface NavMobileProps {
   data?: NavItemType[];
@@ -172,6 +173,10 @@ const NavMobile: React.FC<NavMobileProps> = ({
             your stories and share them
           </span>
 
+          <br />
+         
+         
+
           <div className="flex justify-between items-center mt-4">
             <SocialsList itemClass="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-full text-xl" />
             <span className="block">
@@ -188,17 +193,19 @@ const NavMobile: React.FC<NavMobileProps> = ({
       <ul className="flex flex-col py-6 px-2 space-y-1 rtl:space-x-reverse">
         {data.map(_renderItem)}
       </ul>
-      {/* <div className="flex items-center justify-between py-6 px-5 space-x-2 rtl:space-x-reverse">
-        <ButtonPrimary className="!px-10 relative">
-          Buy this template
-          <a
-            href="https://themeforest.net/item/ncmaz-blog-news-magazine-nextjs-template/44412092"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute inset-0"
-          ></a>
+              {/* <Button
+                sizeClass="py-3 px-4 sm:px-6"
+                href="/login"
+                pattern="primary"
+              >
+                Sign up
+              </Button> */}
+
+      <div className="flex items-center justify-between py-6 px-5 space-x-2 rtl:space-x-reverse">
+        <ButtonPrimary className="!px-10 relative"  href="/login" >
+           Sign up
         </ButtonPrimary>
-      </div> */}
+      </div>
     </div>
   );
 };

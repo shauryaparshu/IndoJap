@@ -318,10 +318,7 @@ export const NAVIGATION_DEMO_2: NavItemType[] = [
     id: randomId(),
     href: "/",
     name: "Home",
-    children: [
-      { id: randomId(), href: "/", name: "Home page 3" },
-      { id: randomId(), href: "/", name: "Header style 1", isNew: true }
-    ],
+   
   },
 
   // single pages ----------------
@@ -329,50 +326,12 @@ export const NAVIGATION_DEMO_2: NavItemType[] = [
     id: randomId(),
     href: "/events" as Route,
     name: "Events",
-    children: [
-      {
-        id: randomId(),
-        href: "/single/demo-slug" as Route,
-        name: "Single page 1",
-      },
-      {
-        id: randomId(),
-        href: "/single-2/demo-slug" as Route,
-        name: "Single page 2",
-      },
-      {
-        id: randomId(),
-        href: "/single-3/demo-slug" as Route,
-        name: "Single page 3",
-      },
-      {
-        id: randomId(),
-        href: "/single-4/demo-slug" as Route,
-        name: "Single page 4",
-      },
-
-      {
-        id: randomId(),
-        href: "/single-audio/demo-slug" as Route,
-        name: "Single Audio",
-      },
-      {
-        id: randomId(),
-        href: "/single-video/demo-slug" as Route,
-        name: "Single Video",
-      },
-      {
-        id: randomId(),
-        href: "/single-gallery/demo-slug" as Route,
-        name: "Single Gallery",
-        isNew: true,
-      },
-    ],
+  
   },
   //
   {
     id: randomId(),
-    href: "/single/demo-slug" as Route,
+    href: "/blogs" as Route,
     name: "Blogs",
   },
 
@@ -385,13 +344,29 @@ export const NAVIGATION_DEMO_2: NavItemType[] = [
     id: randomId(),
     href: "/about",
     name: "About Us",
-    children: OTHER_PAGE_CHILD,
   },
   {
     id: randomId(),
     href: "/search",
     name: "Explore",
-    type: "megaMenu",
-    children: MEGAMENU_TEMPLATES,
+    type: "dropdown",
+    children: [
+      {
+        id: randomId(),
+        href: "/dashboard",
+        name: "Dashboard",
+      },
+        {
+          id: randomId(),
+          href: "/contact",
+          name: "Contact us",
+        },
+        {
+          id: randomId(),
+          href: "/forgot-pass",
+          name: "Forgot password",
+        },
+       
+    ],
   },
 ];

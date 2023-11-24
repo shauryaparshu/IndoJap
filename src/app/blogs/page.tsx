@@ -1,10 +1,13 @@
-import React from "react";
+import React, { ReactNode } from "react"; 
 import Image from "next/image";
 import SingleHeader from "@/app/(singles)/SingleHeader";
+import SingleContent from "./SingleContent";
+import SingleRelatedPosts from "./SingleRelatedPosts";
+import { Sidebar } from "./Sidebar";
 
-const PageSingleTemplate3 = ({}) => {
+const PageSingleTemplate3 =({ children }: { children: ReactNode }) => {
   return (
-    <header className="relative pt-16 z-10 md:py-20 lg:py-28 bg-neutral-900 dark:bg-black">
+    <><header className="relative pt-16 z-10 md:py-20 lg:py-28 bg-neutral-900 dark:bg-black">
       {/* SINGLE HEADER */}
       <div className="dark container relative z-10">
         <div className="max-w-screen-md">
@@ -21,10 +24,26 @@ const PageSingleTemplate3 = ({}) => {
           alt=""
           width={1635}
           height={774}
-          sizes="(max-width: 1024px) 100vw, 1240px"
-        />
+          sizes="(max-width: 1024px) 100vw, 1240px" />
       </div>
+
     </header>
+    <div className={`relative`}>
+      {children}
+
+      <div className="container flex flex-col my-10 lg:flex-row ">
+        <div className="w-full lg:w-3/5 xl:w-2/3 xl:pe-20">
+          <SingleContent />
+        </div>
+        <div className="w-full mt-12 lg:mt-0 lg:w-2/5 lg:ps-10 xl:ps-0 xl:w-1/3">
+          <Sidebar />
+        </div>
+      </div>
+
+      {/* RELATED POSTS */}
+      <SingleRelatedPosts />
+    </div>
+    </>
   );
 };
 

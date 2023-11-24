@@ -2,10 +2,10 @@
 
 import React, { FC, useEffect, useRef, useState } from "react";
 import Tag from "@/components/Tag/Tag";
-import SingleAuthor from "./SingleAuthor";
-import SingleCommentForm from "./SingleCommentForm";
-import SingleCommentLists from "./SingleCommentLists";
-import SingleContentDemo from "./SingleContentDemo";
+import SingleAuthor from "../(singles)/SingleAuthor";
+import SingleCommentForm from "../(singles)/SingleCommentForm";
+import SingleCommentLists from "../(singles)/SingleCommentLists";
+import SingleContentDemo from "../(singles)/SingleContentDemo";
 import { DEMO_TAGS } from "@/data/taxonomies";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import PostCardLikeAction from "@/components/PostCardLikeAction/PostCardLikeAction";

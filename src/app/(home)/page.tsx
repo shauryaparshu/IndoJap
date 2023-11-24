@@ -2,7 +2,7 @@ import React from "react";
 import { DEMO_CATEGORIES, DEMO_TAGS } from "@/data/taxonomies";
 import { DEMO_POSTS, DEMO_POSTS_AUDIO } from "@/data/posts";
 import SectionHero from "@/components/SectionHero/SectionHero";
-import rightImg from "@/images/hero-right.png";
+import rightImg from "@/images/indojap_logo.png";
 import Vector1 from "@/images/Vector1.png";
 import SectionSubscribe2 from "@/components/SectionSubscribe2/SectionSubscribe2";
 import BackgroundSection from "@/components/BackgroundSection/BackgroundSection";
@@ -55,12 +55,8 @@ const posts: PostDataType[] = DEMO_POSTS.filter((_, i) => i < 16);
               {/* Far from face <br /> but not from {` `} */}
               Discover Vibrant Indian Events in 
               <span className="relative pr-3">
-                <Image
-                  className="w-full absolute top-1/2 -start-1 transform -translate-y-1/2"
-                  src={Vector1}
-                  alt=""
-                />
-                <span className="relative">Japan</span>
+                
+                <span className="relative"> Japan</span>
               </span>
             </span>
           }
