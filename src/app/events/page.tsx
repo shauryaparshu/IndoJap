@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import ModalCategories from "../../ModalCategories";
-import ModalTags from "../../ModalTags";
+import ModalCategories from "./ModalCategories";
+import ModalTags from "./ModalTags";
 import { DEMO_POSTS } from "@/data/posts";
 import { PostDataType } from "@/data/types";
 import { DEMO_CATEGORIES, DEMO_TAGS } from "@/data/taxonomies";

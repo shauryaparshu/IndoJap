@@ -11,7 +11,7 @@ export interface CustomLink {
 //  ##########  PostDataType ######## //
 export interface TaxonomyType {
   id: string | number;
-  name: string;
+  name: string; 
   href: Route;
   count?: number;
   thumbnail?: string | StaticImageData;

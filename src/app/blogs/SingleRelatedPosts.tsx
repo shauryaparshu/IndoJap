@@ -53,7 +53,7 @@ const SingleRelatedPosts: FC<SingleRelatedPostsProps> = ({
         </div>
 
         {/* MORE FROM AUTHOR */}
-        <div className="mt-20">
+        {/* <div className="mt-20">
           <Heading
             className="mb-10 text-neutral-900 dark:text-neutral-50"
             desc=""
@@ -65,7 +65,7 @@ const SingleRelatedPosts: FC<SingleRelatedPostsProps> = ({
               <Card9 key={post.id} post={post} />
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

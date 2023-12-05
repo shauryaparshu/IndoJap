@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { Sidebar } from "../Sidebar";
-import SingleContent from "../SingleContent";
-import SingleRelatedPosts from "../SingleRelatedPosts";
+import SingleContent from "../../blogs/SingleContent";
+import SingleRelatedPosts from "../../blogs/SingleRelatedPosts";
 
 const layout = ({ children }: { children: ReactNode }) => {
   return (
