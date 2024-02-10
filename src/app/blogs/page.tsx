@@ -4,7 +4,7 @@ import SingleHeader from "@/app/(singles)/SingleHeader";
 import SingleContent from "./SingleContent";
 import SingleRelatedPosts from "./SingleRelatedPosts";
 import { Sidebar } from "./Sidebar";
-
+ 
 const PageSingleTemplate3 = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
