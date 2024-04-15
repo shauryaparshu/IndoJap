@@ -7,9 +7,12 @@ import { DEMO_CATEGORIES } from "./taxonomies";
 import { PostDataType } from "./types";
 import { DEMO_AUTHORS } from "./authors";
 
+const DEFAULT_TIME = "00:00";
+const DEFAULT_LOCATION = "Unknown";
+const DEFAULT_PRICE = "Free";
+
 // FOR MAIN DEMO
 const DEMO_POSTS = __posts.map((post, index): PostDataType => {
-  //  ##########  GET CATEGORY BY CAT ID ######## //
   const categories = post.categoriesId.map(
     (id) => DEMO_CATEGORIES.filter((taxonomy) => taxonomy.id === id)[0]
   );
@@ -19,12 +22,14 @@ const DEMO_POSTS = __posts.map((post, index): PostDataType => {
     id: `DEMO_POSTS_${index + 1}`,
     author: DEMO_AUTHORS.filter((user) => user.id === post.authorId)[0],
     categories: [categories[0]],
+    time: post.time || DEFAULT_TIME,
+    location: post.location || DEFAULT_LOCATION,
+    price: post.price || DEFAULT_PRICE,
   } as PostDataType;
 });
 
 // FOR MAIN DEMO
 const DEMO_POSTS_NEWS = __posts_news.map((post, index): PostDataType => {
-  //  ##########  GET CATEGORY BY CAT ID ######## //
   const categories = post.categoriesId.map(
     (id) => DEMO_CATEGORIES.filter((taxonomy) => taxonomy.id === id)[0]
   );
@@ -34,12 +39,14 @@ const DEMO_POSTS_NEWS = __posts_news.map((post, index): PostDataType => {
     id: `DEMO_POSTS_NEWS_${index + 1}`,
     author: DEMO_AUTHORS.filter((user) => user.id === post.authorId)[0],
     categories: [categories[0]],
+    time: DEFAULT_TIME,
+    location: DEFAULT_LOCATION,
+    price: DEFAULT_PRICE,
   } as PostDataType;
 });
 
 // FOR POST TYPE GALLERY
 const DEMO_POSTS_GALLERY = __postsGallery.map((post, index): PostDataType => {
-  //  ##########  GET CATEGORY BY CAT ID ######## //
   const categories = post.categoriesId.map(
     (id) => DEMO_CATEGORIES.filter((taxonomy) => taxonomy.id === id)[0]
   );
@@ -49,12 +56,14 @@ const DEMO_POSTS_GALLERY = __postsGallery.map((post, index): PostDataType => {
     id: `DEMO_POSTS_GALLERY_${index + 1}`,
     author: DEMO_AUTHORS.filter((user) => user.id === post.authorId)[0],
     categories: [categories[0]],
+    time: DEFAULT_TIME,
+    location: DEFAULT_LOCATION,
+    price: DEFAULT_PRICE,
   } as PostDataType;
 });
 
 // FOR POST TYPE VIDEO
 const DEMO_POSTS_VIDEO = __postsVideo.map((post, index): PostDataType => {
-  //  ##########  GET CATEGORY BY CAT ID ######## //
   const categories = post.categoriesId.map(
     (id) => DEMO_CATEGORIES.filter((taxonomy) => taxonomy.id === id)[0]
   );
@@ -64,12 +73,14 @@ const DEMO_POSTS_VIDEO = __postsVideo.map((post, index): PostDataType => {
     id: `DEMO_POSTS_VIDEO_${index + 1}`,
     author: DEMO_AUTHORS.filter((user) => user.id === post.authorId)[0],
     categories: [categories[0]],
+    time: DEFAULT_TIME,
+    location: DEFAULT_LOCATION,
+    price: DEFAULT_PRICE,
   } as PostDataType;
 });
 
 // FOR POST TYPE AUDIO
 const DEMO_POSTS_AUDIO = __postsAudio.map((post, index): PostDataType => {
-  //  ##########  GET CATEGORY BY CAT ID ######## //
   const categories = post.categoriesId.map(
     (id) => DEMO_CATEGORIES.filter((taxonomy) => taxonomy.id === id)[0]
   );
@@ -79,6 +90,9 @@ const DEMO_POSTS_AUDIO = __postsAudio.map((post, index): PostDataType => {
     id: `DEMO_POSTS_AUDIO_${index + 1}`,
     author: DEMO_AUTHORS.filter((user) => user.id === post.authorId)[0],
     categories: [categories[0]],
+    time: DEFAULT_TIME,
+    location: DEFAULT_LOCATION,
+    price: DEFAULT_PRICE,
   } as PostDataType;
 });
 

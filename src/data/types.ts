@@ -38,6 +38,9 @@ export interface PostDataType {
   id: string | number;
   author: PostAuthorType;
   date: string;
+  time: string;
+  location:string;
+  price: string;
   href: Route;
   categories: TaxonomyType[];
   title: string;

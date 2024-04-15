@@ -42,9 +42,9 @@ const PageArchive = ({}) => {
           />
           <div className="absolute inset-0 bg-black text-white bg-opacity-30 flex flex-col items-center justify-center">
             <h2 className="inline-block align-middle text-5xl font-semibold md:text-7xl ">
-              Garden
+              Events
             </h2>
-            <span className="block mt-4 text-neutral-300">115 Articles</span>
+            <span className="block mt-4 text-neutral-300">115 Events</span>
           </div>
         </div>
       </div>

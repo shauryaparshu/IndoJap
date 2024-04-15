@@ -1,5 +1,6 @@
 import React from "react";
 import BgGlassmorphism from "@/components/BgGlassmorphism/BgGlassmorphism";
+import ButtonPrimary from "@/components/Button/ButtonPrimary";
 
 
 
@@ -23,12 +24,14 @@ const PageAbout = ({ }) => {
       </div>
       {/* -------------------------------------Contact Us----------------------------------------- */}
       <div className="flex flex-wrap justify-center">
-        <div className="bg-white dark:bg-slate-800 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-md m-5 sm:w-3/5">
-          <h3 className="dark:text-white mt-5  mb-5  tracking-tight text-center text-indigo-700 my-6 font-extrabold  md:text-xl lg:text-2xl">Contact Us</h3>
-          <p className=" mb-5 text-sm text-center">
-            We value your input, questions, and feedback. Whether you have suggestions for new content, want to collaborate, or just wish to say hello, we are thrilled to hear from you.
-          </p>
-        </div>
+        <div className="bg-white dark:bg-slate-800 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-md m-5 sm:w-3/5 flex flex-col items-center">
+         <h3 className="dark:text-white mt-5 mb-5 tracking-tight text-center text-indigo-700 my-6 font-extrabold md:text-xl lg:text-2xl">Contact us</h3>
+           <p className="mb-5 text-sm text-center">
+              We value your input, questions, and feedback. Whether you have suggestions for new content, want to collaborate, or just wish to say hello, we are thrilled to hear from you.
+            </p>
+           <ButtonPrimary type="submit" href="/contact">Send Message</ButtonPrimary>
+          </div>
+
         {/* ------------------------------------------------------------ */}
         <div className="bg-white dark:bg-slate-800 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-md  m-5 lg:w-1/3">
           <h3 className="dark:text-white mt-5  mb-5  tracking-tight text-center text-indigo-700 my-6 font-extrabold md:text-xl lg:text-2xl">Connect with Us</h3>

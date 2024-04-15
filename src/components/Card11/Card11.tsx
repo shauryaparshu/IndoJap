@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 
 import React, { FC, useState } from "react";
 import PostCardSaveAction from "@/components/PostCardSaveAction/PostCardSaveAction";
@@ -20,9 +20,9 @@ const Card11: FC<Card11Props> = ({
   className = "h-full",
   post,
   hiddenAuthor = false,
-  ratio = "aspect-w-4 aspect-h-3",
+  ratio = "aspect-w-5 aspect-h-3",
 }) => {
-  const { title, href, categories, date } = post;
+  const { title, href, categories, date, time, location, price } = post;
 
   const [isHover, setIsHover] = useState(false);
 
@@ -41,24 +41,42 @@ const Card11: FC<Card11Props> = ({
         </div>
       </div>
       <Link href={href} className="absolute inset-0"></Link>
-      <span className="absolute top-3 inset-x-3 z-10">
-        <CategoryBadgeList categories={categories} />
+      <span className="absolute top-2 inset-x-3 z-10">
+        <div className="flex items-end justify-between mt-auto">
+          <CategoryBadgeList categories={categories} />
+          <PostCardSaveAction className="relative" />
+        </div>
       </span>
 
       <div className="p-4 flex flex-col space-y-3">
-        {!hiddenAuthor ? (
-          <PostCardMeta meta={post} />
-        ) : (
-          <span className="text-xs text-neutral-500 ">{date}</span>
-        )}
         <h3 className="nc-card-title block text-base font-semibold text-neutral-900 dark:text-neutral-100">
           <span className="line-clamp-2" title={title}>
             {title}
           </span>
         </h3>
+        {/* {!hiddenAuthor ? (
+          <PostCardMeta meta={post} />
+        ) : (
+          <span className="text-xs text-neutral-500 ">{date}</span>
+        )} */}
+        <div className="flex items-end justify-between mt-auto">
+          <h1>
+            {date}
+            <span className="text-neutral-500 dark:text-neutral-400 mx-[6px] font-medium">
+              ·
+            </span>{" "}
+            {time}
+          </h1>
+          •<h2>{location}</h2>
+        </div>
+
+        <PostCardMeta meta={post} />
+
         <div className="flex items-end justify-between mt-auto">
           <PostCardLikeAndComment className="relative" />
-          <PostCardSaveAction className="relative" />
+          <div className="text-right">
+            <span className="text-lg ">{price}</span>
+          </div>
         </div>
       </div>
     </div>

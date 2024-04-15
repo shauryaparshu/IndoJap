@@ -38,14 +38,14 @@ const PostCardMeta: FC<PostCardMetaProps> = ({
           {author.displayName}
         </span>
       </Link>
-      <>
+      {/* <>
         <span className="text-neutral-500 dark:text-neutral-400 mx-[6px] font-medium">
           ·
         </span>
         <span className="text-neutral-500 dark:text-neutral-400 font-normal">
           {date}
         </span>
-      </>
+      </> */}
     </div>
   );
 };

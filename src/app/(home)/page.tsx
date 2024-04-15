@@ -34,8 +34,7 @@ const MAGAZINE1_POSTS = POSTS.filter((_, i) => i >= 0 && i < 8);
 //
 
 const PageHomeDemo3: React.FC = () => {
-  
-const posts: PostDataType[] = DEMO_POSTS.filter((_, i) => i < 16);
+  const posts: PostDataType[] = DEMO_POSTS.filter((_, i) => i < 16);
   const FILTERS = [
     { name: "Most Recent" },
     { name: "Curated by Admin" },
@@ -52,10 +51,8 @@ const posts: PostDataType[] = DEMO_POSTS.filter((_, i) => i < 16);
           className="pt-10 pb-16 md:py-16 lg:pb-28 lg:pt-20"
           heading={
             <span>
-              {/* Far from face <br /> but not from {` `} */}
-              Discover Vibrant Indian Events in 
+              Discover Vibrant Indian Events in
               <span className="relative pr-3">
-                
                 <span className="relative"> Japan</span>
               </span>
             </span>
@@ -63,12 +60,11 @@ const posts: PostDataType[] = DEMO_POSTS.filter((_, i) => i < 16);
           btnText="Explore Events"
           subHeading="Join the Celebration: Explore a world of Indian culture, traditions, and experiences right here in Japan!"
         />
-          
-          {/* Events section */}
-    <div>
-          
-        <h2 className="font-semibold text-4xl"> Events </h2>
-        <br />
+
+        {/* Events section */}
+        <div>
+          <h2 className="font-semibold text-4xl"> Events </h2>
+          <br />
           <div className="flex flex-col sm:justify-between sm:flex-row">
             <div className="flex space-x-2.5 rtl:space-x-reverse">
               <ModalCategories categories={DEMO_CATEGORIES} />
@@ -92,20 +88,18 @@ const posts: PostDataType[] = DEMO_POSTS.filter((_, i) => i < 16);
             <Pagination />
             <ButtonPrimary>Show me more</ButtonPrimary>
           </div>
-    </div>
-    <br />
+        </div>
+        <br />
 
         {/* Articles section */}
-        <div className="relative py-16"> 
+        <div className="relative py-16">
           <BackgroundSection />
           <SectionMagazine5 heading="Latest Articles" posts={MAGAZINE1_POSTS} />
         </div>
 
-       
-
         {/* <SectionAds /> */}
 
-       {/* NewsLetter */}
+        {/* NewsLetter */}
         <SectionSubscribe2 className="pb-16 lg:pb-28" />
       </div>
     </div>
