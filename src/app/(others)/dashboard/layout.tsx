@@ -13,33 +13,22 @@ const subPages: { href: Route; pageName: string; emoij: string }[] = [
     pageName: "Dash board",
   },
   {
-    href: "/dashboard/posts",
-
-    emoij: "📕",
-    pageName: "Posts",
-  },
-  {
     href: "/dashboard/edit-profile",
 
     emoij: "🛠",
     pageName: "Edit profile",
   },
   {
-    href: "/dashboard/subscription",
-    emoij: "📃",
-    pageName: "Subscription",
-  },
-  {
-    href: "/dashboard/billing-address",
-
-    emoij: "✈",
-    pageName: "Billing address",
-  },
-  {
     href: "/dashboard/submit-post",
 
     emoij: "✍",
     pageName: "Submit post",
+  },
+  {
+    href: "/dashboard/posts",
+
+    emoij: "📕",
+    pageName: "Posts",
   },
 ];
 
@@ -51,8 +40,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <header className="text-center max-w-2xl mx-auto - mb-14 sm:mb-16 lg:mb-24">
         <Heading2 emoji="">Dash board</Heading2>
         <span className="block text-sm mt-2 text-neutral-700 sm:text-base dark:text-neutral-200">
-          View your dashboard, manage your posts, subscription and edit and
-          profile.
+          View your dashboard, manage your profile, upload and edit and events.
         </span>
       </header>
 

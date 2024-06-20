@@ -1,7 +1,8 @@
-import React, { FC } from "react";
+// import { useRouter } from "next/router";
 import ModalCategories from "./ModalCategories";
 import ModalTags from "./ModalTags";
 import { DEMO_POSTS } from "@/data/posts";
+import { Event } from "@/data/types";
 import { PostDataType } from "@/data/types";
 import { DEMO_CATEGORIES, DEMO_TAGS } from "@/data/taxonomies";
 import { DEMO_AUTHORS } from "@/data/authors";
@@ -9,17 +10,24 @@ import Pagination from "@/components/Pagination/Pagination";
 import ButtonPrimary from "@/components/Button/ButtonPrimary";
 import ArchiveFilterListBox from "@/components/ArchiveFilterListBox/ArchiveFilterListBox";
 import SectionSubscribe2 from "@/components/SectionSubscribe2/SectionSubscribe2";
-import Card11 from "@/components/Card11/Card11";
+// import Card11 from "@/components/Card11/Card11";
+import Eventcard from "@/components/CardEvent/Eventcard";
 import BackgroundSection from "@/components/BackgroundSection/BackgroundSection";
 import SectionGridCategoryBox from "@/components/SectionGridCategoryBox/SectionGridCategoryBox";
 import ButtonSecondary from "@/components/Button/ButtonSecondary";
 import SectionSliderNewAuthors from "@/components/SectionSliderNewAthors/SectionSliderNewAuthors";
 import Image from "next/image";
+// import useDataFetching from "@/hooks/useDataFetching";
+import LoadingPost from "@/components/LoadingPost/LoadingPost";
+import getAllEvents from "@/lib/getAllEvents";
+import { Suspense } from "react";
 
-// Tag and category have same data type - we will use one demo data
-const posts: PostDataType[] = DEMO_POSTS.filter((_, i) => i < 16);
+export const revalidate = 0;
+const PageArchive = async ({}) => {
+  // const { loading } = useDataFetching();
+  const eventData = await getAllEvents();
+  const events = eventData.Items;
 
-const PageArchive = ({}) => {
   const FILTERS = [
     { name: "Most Recent" },
     { name: "Curated by Admin" },
@@ -28,15 +36,19 @@ const PageArchive = ({}) => {
     { name: "Most Viewed" },
   ];
 
+  if (!events) {
+    return <p>Events not found!</p>;
+  }
+
   return (
     <div className={`nc-PageArchive`}>
       {/* HEADER */}
-      <div className="w-full px-2 xl:max-w-screen-2xl mx-auto">
+      <div className="w-full px-2 xl:max-w-screen-2xl mx-auto pt-2">
         <div className="relative aspect-w-16 aspect-h-13 sm:aspect-h-9 lg:aspect-h-8 xl:aspect-h-5 rounded-3xl md:rounded-[40px] overflow-hidden z-0">
           <Image
             alt="archive"
             fill
-            src="https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            src="https://www.pcclean.io/wp-content/gallery/mount-fuji-hd-wallpapers/Mount-Fuji-21.jpg"
             className="object-cover w-full h-full rounded-3xl md:rounded-[40px]"
             sizes="(max-width: 1280px) 100vw, 1536px"
           />
@@ -44,7 +56,9 @@ const PageArchive = ({}) => {
             <h2 className="inline-block align-middle text-5xl font-semibold md:text-7xl ">
               Events
             </h2>
-            <span className="block mt-4 text-neutral-300">115 Events</span>
+            <span className="block mt-4 text-neutral-300">
+              {events.length} Events
+            </span>
           </div>
         </div>
       </div>
@@ -64,11 +78,14 @@ const PageArchive = ({}) => {
           </div>
 
           {/* LOOP ITEMS */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 mt-8 lg:mt-10">
-            {posts.map((post) => (
-              <Card11 key={post.id} post={post} />
-            ))}
-          </div>
+          {/* {loading && <LoadingPost />} */}
+          <Suspense fallback={<LoadingPost />}>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 mt-8 lg:mt-10">
+              {events.map((event: Event) => (
+                <Eventcard key={event.eventId} event={event} />
+              ))}
+            </div>
+          </Suspense>
 
           {/* PAGINATIONS */}
           <div className="flex flex-col mt-12 lg:mt-16 space-y-5 sm:space-y-0 sm:space-x-3 sm:flex-row sm:justify-between sm:items-center">

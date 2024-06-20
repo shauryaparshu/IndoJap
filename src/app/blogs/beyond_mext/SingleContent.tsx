@@ -2,15 +2,16 @@
 
 import React, { FC, useEffect, useRef, useState } from "react";
 import Tag from "@/components/Tag/Tag";
-import SingleAuthor from "../(singles)/SingleAuthor";
-import SingleCommentForm from "../(singles)/SingleCommentForm";
-import SingleCommentLists from "../(singles)/SingleCommentLists";
-import SingleContentDemo from "../(singles)/SingleContentDemo";
+import SingleAuthor from "../../(singles)/SingleAuthor";
+import SingleCommentForm from "../../(singles)/SingleCommentForm";
+import SingleCommentLists from "../../(singles)/SingleCommentLists";
+import SingleContentDemo from "../../(singles)/SingleContentDemo";
 import { DEMO_TAGS } from "@/data/taxonomies";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import PostCardLikeAction from "@/components/PostCardLikeAction/PostCardLikeAction";
 import PostCardCommentBtn from "@/components/PostCardCommentBtn/PostCardCommentBtn";
 import { ArrowUpIcon } from "@heroicons/react/24/solid";
+import Blog1Content from "./blog1content";
 
 const demoTags = DEMO_TAGS.filter((_, i) => i < 9);
 
@@ -77,7 +78,8 @@ const SingleContent: FC<SingleContentProps> = ({}) => {
           className="prose lg:prose-lg !max-w-screen-md mx-auto dark:prose-invert"
           ref={contentRef}
         >
-          <SingleContentDemo />
+          <Blog1Content />
+          {/* <SingleContentDemo /> */}
         </div>
 
         {/* TAGS */}
@@ -88,10 +90,10 @@ const SingleContent: FC<SingleContentProps> = ({}) => {
         </div>
 
         {/* AUTHOR */}
-        <div className="max-w-screen-md mx-auto border-b border-t border-neutral-100 dark:border-neutral-700"></div>
+        {/* <div className="max-w-screen-md mx-auto border-b border-t border-neutral-100 dark:border-neutral-700"></div>
         <div className="max-w-screen-md mx-auto ">
           <SingleAuthor />
-        </div>
+        </div> */}
 
         {/* COMMENT FORM */}
         <div

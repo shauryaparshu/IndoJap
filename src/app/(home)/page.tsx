@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { DEMO_CATEGORIES, DEMO_TAGS } from "@/data/taxonomies";
 import { DEMO_POSTS, DEMO_POSTS_AUDIO } from "@/data/posts";
 import SectionHero from "@/components/SectionHero/SectionHero";
@@ -24,17 +24,21 @@ import ArchiveFilterListBox from "@/components/ArchiveFilterListBox/ArchiveFilte
 import Pagination from "@/components/Pagination/Pagination";
 import ButtonPrimary from "@/components/Button/ButtonPrimary";
 import Card11 from "@/components/Card11/Card11";
-import { PostDataType } from "@/data/types";
 import HeaderFilter from "@/components/Sections/HeaderFilter";
 import Heading from "@/components/Heading/Heading";
+// import useDataFetching from "@/hooks/useDataFetching";
+import LoadingPost from "@/components/LoadingPost/LoadingPost";
+import Eventcard from "@/components/CardEvent/Eventcard";
+import getAllEvents from "@/lib/getAllEvents";
+import { Event } from "@/data/types";
 
 // DEMO DATA
 const POSTS = DEMO_POSTS;
 const MAGAZINE1_POSTS = POSTS.filter((_, i) => i >= 0 && i < 8);
-//
-
-const PageHomeDemo3: React.FC = () => {
-  const posts: PostDataType[] = DEMO_POSTS.filter((_, i) => i < 16);
+export const revalidate = 0;
+const PageHomeDemo3: React.FC = async () => {
+  // const { loading } = useDataFetching();
+  // const posts: PostDataType[] = DEMO_POSTS.filter((_, i) => i < 16);
   const FILTERS = [
     { name: "Most Recent" },
     { name: "Curated by Admin" },
@@ -42,6 +46,8 @@ const PageHomeDemo3: React.FC = () => {
     { name: "Most Discussed" },
     { name: "Most Viewed" },
   ];
+  const eventData = await getAllEvents();
+  const events = eventData.Items;
   return (
     <div className="nc-PageHomeDemo3 relative">
       <div className="container relative">
@@ -77,11 +83,14 @@ const PageHomeDemo3: React.FC = () => {
           </div>
 
           {/* LOOP ITEMS */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 mt-8 lg:mt-10">
-            {posts.map((post) => (
-              <Card11 key={post.id} post={post} />
-            ))}
-          </div>
+          {/* {loading && <LoadingPost />} */}
+          <Suspense fallback={<LoadingPost />}>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 mt-8 lg:mt-10">
+              {events.map((event: Event) => (
+                <Eventcard key={event.eventId} event={event} />
+              ))}
+            </div>
+          </Suspense>
 
           {/* PAGINATIONS */}
           <div className="flex flex-col mt-12 lg:mt-16 space-y-5 sm:space-y-0 sm:space-x-3 sm:flex-row sm:justify-between sm:items-center">
@@ -92,9 +101,14 @@ const PageHomeDemo3: React.FC = () => {
         <br />
 
         {/* Articles section */}
-        <div className="relative py-16">
+        {/* <div className="relative py-16">
           <BackgroundSection />
           <SectionMagazine5 heading="Latest Articles" posts={MAGAZINE1_POSTS} />
+        </div> */}
+
+        <div className="relative py-16">
+          <BackgroundSection />
+          <SectionLatestPosts className="pb-16 lg:pb-28" />
         </div>
 
         {/* <SectionAds /> */}

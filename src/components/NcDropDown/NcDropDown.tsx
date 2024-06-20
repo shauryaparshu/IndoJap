@@ -7,7 +7,7 @@ import { Menu, Transition } from "@headlessui/react";
 export interface NcDropDownItem {
   id: string;
   name: string;
-  icon: string;
+  icon: ReactNode;
 }
 
 export interface NcDropDownProps {
@@ -69,12 +69,7 @@ const NcDropDown: FC<NcDropDownProps> = ({
                         "flex items-center rounded-xl w-full px-3 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-neutral-100 truncate "
                       }
                     >
-                      {!!item.icon && (
-                        <div
-                          dangerouslySetInnerHTML={{ __html: item.icon }}
-                        ></div>
-                        // <i className={`${item.icon} mr-1 w-7 text-base`}></i>
-                      )}
+                      {!!item.icon && <div>{item.icon}</div>}
                       <span className="ms-3">{item.name}</span>
                     </button>
                   )

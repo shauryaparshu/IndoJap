@@ -1,0 +1,89 @@
+"use client";
+
+import React, { FC, useState } from "react";
+import PostCardSaveAction from "@/components/PostCardSaveAction/PostCardSaveAction";
+import { PostDataType } from "@/data/types";
+import { Event } from "@/data/types";
+// import CategoryBadgeList from "@/components/CategoryBadgeList/CategoryBadgeList";
+import EventCategoryBadgeList from "@/components/EventCategoryBadgeList/EventCategoryBadgeList";
+import PostCardLikeAndComment from "@/components/PostCardLikeAndComment/PostCardLikeAndComment";
+import PostCardMeta from "@/components/PostCardMeta/PostCardMeta";
+import PostFeaturedMedia from "@/components/PostFeaturedMedia/PostFeaturedMedia";
+import Link from "next/link";
+import EventImage from "./EventImage";
+
+export interface EventcardProps {
+  className?: string;
+  // post: PostDataType;
+  event: Event;
+  ratio?: string;
+  hiddenAuthor?: boolean;
+}
+
+const Eventcard: FC<EventcardProps> = ({
+  className = "h-full",
+  event,
+  hiddenAuthor = false,
+  ratio = "aspect-w-5 aspect-h-3",
+}) => {
+  const { title, categories, dateTime, location, price, eventId, imageURL } =
+    event;
+
+  const [isHover, setIsHover] = useState(false);
+
+  return (
+    <div
+      className={`nc-Card11 relative flex flex-col group rounded-3xl overflow-hidden bg-white dark:bg-neutral-900 ${className}`}
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
+      //
+    >
+      <div
+        className={`block flex-shrink-0 relative w-full rounded-t-3xl overflow-hidden z-10 ${ratio}`}
+      >
+        <div>
+          {/* <PostFeaturedMedia post={post} isHover={isHover} /> */}
+          <EventImage event={event} />
+        </div>
+      </div>
+      <Link href={`/events/${eventId}`} className="absolute inset-0"></Link>
+      <span className="absolute top-2 inset-x-3 z-10">
+        <div className="flex items-end justify-between mt-auto">
+          <EventCategoryBadgeList EventCategorie={categories} />
+          <PostCardSaveAction className="relative" />
+        </div>
+      </span>
+
+      <div className="p-4 flex flex-col space-y-3">
+        <h3 className="nc-card-title block text-base font-semibold text-neutral-900 dark:text-neutral-100">
+          <span className="line-clamp-2" title={title}>
+            {title}
+          </span>
+        </h3>
+        {/* {!hiddenAuthor ? (
+          <PostCardMeta meta={post} />
+        ) : (
+          <span className="text-xs text-neutral-500 ">{date}</span>
+        )} */}
+        <div className="flex items-end justify-between mt-auto">
+          <h1>
+            {dateTime}
+            <span className="text-neutral-500 dark:text-neutral-400 mx-[6px] font-medium"></span>{" "}
+          </h1>
+          • <h2> {location}</h2>
+        </div>
+
+        {/* <PostCardMeta meta={event} /> */}
+
+        <div className="flex items-end justify-between mt-auto">
+          <PostCardLikeAndComment className="relative" />
+          <div className="text-right">
+            <span className="text-lg ">¥ {price}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Eventcard;

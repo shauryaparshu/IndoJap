@@ -14,6 +14,20 @@
     "jobName": "Author Job"
   },
   {
+    "id": 12,
+    "firstName": "Shaurya",
+    "lastName": "Parshu",
+    "displayName": "Shaurya Parshu",
+    "email": "atruelock0@skype.com",
+    "gender": "Male",
+    "avatar": "https://dev-indojap-site-imageuploadsbucketc6e2667e-tz5tcenzwzys.s3.amazonaws.com/184f8058-6770-41df-9547-6eccab74378f.jpg",
+    "bgImage": "https://images.pexels.com/photos/912410/pexels-photo-912410.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    "count": 40,
+    "href": "https://www.youtube.com/@ExploringInfiniti",
+    "desc": "Blending chess mastery with wanderlust, this 200k-subscribed YouTuber takes viewers on captivating vlogs exploring Japan's cultural gems while sharing insightful chess commentary.",
+    "jobName": "Author Job"
+  },
+  {
     "id": 2,
     "firstName": "Chariot",
     "lastName": "Birrell",

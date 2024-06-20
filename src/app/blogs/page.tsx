@@ -1,52 +1,46 @@
-import React, { FC, ReactNode } from "react"; 
+import React, { FC, ReactNode } from "react";
 import Image from "next/image";
 import SingleHeader from "@/app/(singles)/SingleHeader";
-import SingleContent from "./SingleContent";
+import SingleContent from "./beyond_mext/SingleContent";
 import SingleRelatedPosts from "./SingleRelatedPosts";
 import { Sidebar } from "./Sidebar";
+import SectionLatestPosts from "@/components/Sections/SectionLatestPosts";
+import BackgroundSection from "@/components/BackgroundSection/BackgroundSection";
 
 // export interface PageSingleTemplate3Props {
 //   children: ReactNode;
 // }
 
 // const PageSingleTemplate3: FC<PageSingleTemplate3Props> = ({ children }) => {
-  const PageSingleTemplate3 = ({}) => {
+const PageSingleTemplate3 = ({}) => {
   return (
-    <><header className="relative pt-16 z-10 md:py-20 lg:py-28 bg-neutral-900 dark:bg-black">
-      {/* SINGLE HEADER */}
-      <div className="dark container relative z-10">
-        <div className="max-w-screen-md">
-          <SingleHeader hiddenDesc />
+    <>
+      <div className="w-full px-2 xl:max-w-screen-2xl mx-auto pt-2">
+        <div className="relative aspect-w-16 aspect-h-13 sm:aspect-h-9 lg:aspect-h-8 xl:aspect-h-5 rounded-3xl md:rounded-[40px] overflow-hidden z-0">
+          <Image
+            alt="archive"
+            fill
+            src="https://dev-indojap-site-imageuploadsbucketc6e2667e-tz5tcenzwzys.s3.amazonaws.com/blogimage.jpg"
+            className="object-cover w-full h-full rounded-3xl md:rounded-[40px]"
+            sizes="(max-width: 1280px) 100vw, 1536px"
+          />
+          <div className="absolute inset-0 bg-black text-white bg-opacity-30 flex flex-col items-center justify-center">
+            <h2 className="inline-block align-middle text-5xl font-semibold md:text-7xl ">
+              Blogs
+            </h2>
+            <span className="block mt-4 text-neutral-300">2 Blogs</span>
+          </div>
         </div>
       </div>
-
-      {/* FEATURED IMAGE */}
-      <div className="mt-8 md:mt-0 md:absolute md:top-0 md:end-0 md:bottom-0 md:w-1/2 lg:w-2/5 2xl:w-1/3">
-        <div className="hidden md:block absolute top-0 start-0 bottom-0 w-1/5 from-neutral-900 dark:from-black bg-gradient-to-r rtl:bg-gradient-to-l"></div>
-        <Image
-          className="block w-full h-full object-cover"
-          src="https://images.unsplash.com/photo-1554941068-a252680d25d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
-          alt=""
-          width={1635}
-          height={774}
-          sizes="(max-width: 1024px) 100vw, 1240px" />
-      </div>
-
-    </header>
-    <div className={`relative`}>
-
-      <div className="container flex flex-col my-10 lg:flex-row ">
-        <div className="w-full lg:w-3/5 xl:w-2/3 xl:pe-20">
-          <SingleContent />
-        </div>
-        <div className="w-full mt-12 lg:mt-0 lg:w-2/5 lg:ps-10 xl:ps-0 xl:w-1/3">
-          <Sidebar />
+      <br />
+      <div className="nc-PageHomeDemo3 relative">
+        <div className="container relative">
+          <div className="relative py-16">
+            <BackgroundSection />
+            <SectionLatestPosts className="pb-16 lg:pb-28" />
+          </div>
         </div>
       </div>
-
-      {/* RELATED POSTS */}
-      <SingleRelatedPosts />
-    </div>
     </>
   );
 };

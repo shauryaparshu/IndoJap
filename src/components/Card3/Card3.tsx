@@ -18,6 +18,7 @@ const Card3: FC<Card3Props> = ({ className = "h-full", post }) => {
     title,
     href,
     readingTime,
+    date,
     featuredImage,
     desc,
     categories,
@@ -46,7 +47,11 @@ const Card3: FC<Card3Props> = ({ className = "h-full", post }) => {
             </div>
           </Link>
 
-          <PostCardMeta meta={{ ...post }} />
+          {/* <PostCardMeta meta={{ ...post }} />
+           */}
+          <p>
+            {readingTime} min read · {date}
+          </p>
         </div>
         <div className="mt-5 flex items-center flex-wrap justify-between">
           <PostCardLikeAndComment />

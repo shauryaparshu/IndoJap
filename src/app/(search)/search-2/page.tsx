@@ -20,6 +20,9 @@ import Card11 from "@/components/Card11/Card11";
 import CardCategory2 from "@/components/CardCategory2/CardCategory2";
 import Tag from "@/components/Tag/Tag";
 import CardAuthorBox2 from "@/components/CardAuthorBox2/CardAuthorBox2";
+import useDataFetching from "@/hooks/useDataFetching";
+import LoadingPost from "@/components/LoadingPost/LoadingPost";
+import Eventcard from "@/components/CardEvent/Eventcard";
 
 const posts: PostDataType[] = DEMO_POSTS.filter((_, i) => i < 12);
 const cats = DEMO_CATEGORIES.filter((_, i) => i < 15);
@@ -36,6 +39,7 @@ const FILTERS = [
 const TABS = ["Articles", "Categories", "Tags", "Authors"];
 
 const PageSearchV2 = ({}) => {
+  const { loading, events } = useDataFetching();
   let s = "Ui Design";
 
   const [tabActive, setTabActive] = useState<string>(TABS[0]);
@@ -118,14 +122,13 @@ const PageSearchV2 = ({}) => {
           </div>
 
           {/* LOOP ITEMS */}
-          {/* LOOP ITEMS POSTS */}
-          {tabActive === "Articles" && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-8 mt-8 lg:mt-10">
-              {posts.map((post) => (
-                <Card11 key={post.id} post={post} />
-              ))}
-            </div>
-          )}
+          {loading && <LoadingPost />}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 mt-8 lg:mt-10">
+            {events.map((event) => (
+              <Eventcard key={event.eventId} event={event} />
+            ))}
+          </div>
+
           {/* LOOP ITEMS CATEGORIES */}
           {tabActive === "Categories" && (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 md:gap-8 mt-8 lg:mt-10">

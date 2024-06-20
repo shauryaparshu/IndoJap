@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import SingleContent from "../../blogs/SingleContent";
+import SingleContent from "../../blogs/beyond_mext/SingleContent";
 import SingleRelatedPosts from "../../blogs/SingleRelatedPosts";
 
 const layout = ({ children }: { children: ReactNode }) => {

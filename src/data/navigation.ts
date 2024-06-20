@@ -125,11 +125,6 @@ export const MEGAMENU_TEMPLATES: NavItemType[] = [
         href: "/forgot-pass",
         name: "Forgot password",
       },
-      {
-        id: randomId(),
-        href: "/subscription",
-        name: "Subscription",
-      },
     ],
   },
 ];
@@ -259,16 +254,6 @@ const OTHER_PAGE_CHILD: NavItemType[] = [
         href: "/dashboard/submit-post",
         name: "Submit post page",
       },
-      {
-        id: randomId(),
-        href: "/dashboard/subscription",
-        name: "Subscription",
-      },
-      {
-        id: randomId(),
-        href: "/dashboard/billing-address",
-        name: "Billing address",
-      },
     ],
   },
 
@@ -304,11 +289,6 @@ const OTHER_PAGE_CHILD: NavItemType[] = [
         href: "/forgot-pass",
         name: "Forgot password",
       },
-      {
-        id: randomId(),
-        href: "/subscription",
-        name: "Subscription",
-      },
     ],
   },
 ];
@@ -318,7 +298,6 @@ export const NAVIGATION_DEMO_2: NavItemType[] = [
     id: randomId(),
     href: "/",
     name: "Home",
-   
   },
 
   // single pages ----------------
@@ -326,7 +305,6 @@ export const NAVIGATION_DEMO_2: NavItemType[] = [
     id: randomId(),
     href: "/events" as Route,
     name: "Events",
-  
   },
   //
   {
@@ -356,17 +334,16 @@ export const NAVIGATION_DEMO_2: NavItemType[] = [
         href: "/dashboard",
         name: "Dashboard",
       },
-        {
-          id: randomId(),
-          href: "/contact",
-          name: "Contact us",
-        },
-        {
-          id: randomId(),
-          href: "/forgot-pass",
-          name: "Forgot password",
-        },
-       
+      {
+        id: randomId(),
+        href: "/contact",
+        name: "Contact us",
+      },
+      {
+        id: randomId(),
+        href: "/forgot-pass",
+        name: "Forgot password",
+      },
     ],
   },
 ];

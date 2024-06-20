@@ -31,7 +31,7 @@ const SingleAuthor: FC<SingleAuthorProps> = ({ author = DEMO_AUTHORS[1] }) => {
             className="text-primary-6000 font-medium ml-1"
             href={author.href}
           >
-            Read more
+            Know more
           </Link>
         </span>
       </div>

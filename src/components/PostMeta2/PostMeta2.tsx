@@ -4,7 +4,7 @@ import { PostDataType } from "@/data/types";
 import { DEMO_POSTS } from "@/data/posts";
 import Link from "next/link";
 
-const metaDemo: PostMeta2Props["meta"] = DEMO_POSTS[0];
+const metaDemo: PostMeta2Props["meta"] = DEMO_POSTS[1];
 
 export interface PostMeta2Props {
   className?: string;

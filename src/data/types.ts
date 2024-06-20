@@ -11,7 +11,7 @@ export interface CustomLink {
 //  ##########  PostDataType ######## //
 export interface TaxonomyType {
   id: string | number;
-  name: string; 
+  name: string;
   href: Route;
   count?: number;
   thumbnail?: string | StaticImageData;
@@ -34,12 +34,25 @@ export interface PostAuthorType {
   href: Route;
 }
 
+export interface Event {
+  eventId: string;
+  title: string;
+  desc: string;
+  dateTime: string;
+  location: string;
+  price: string;
+  imageURL: string;
+  categories: string;
+  tags: string;
+  postContent: string;
+  createdAt: string;
+}
 export interface PostDataType {
   id: string | number;
   author: PostAuthorType;
   date: string;
   time: string;
-  location:string;
+  location: string;
   price: string;
   href: Route;
   categories: TaxonomyType[];

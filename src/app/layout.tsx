@@ -6,7 +6,8 @@ import SiteHeader from "./SiteHeader";
 
 export const metadata = {
   title: "IndoJap",
-  description: "created by next app",
+  description:
+    "Explore a world of Indian culture, traditions, and experiences right here in Japan!",
 };
 
 const poppins = Poppins({

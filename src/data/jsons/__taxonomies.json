@@ -9,11 +9,11 @@
   },
   {
     "id": 2,
-    "name": "Jewelry",
+    "name": "Education",
     "href": "/archive/the-demo-archive-slug",
     "thumbnail": "https://images.unsplash.com/photo-1485841890310-6a055c88698a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=550&q=80",
     "count": 16,
-    "color": "red"
+    "color": "indigo"
   },
   {
     "id": 3,

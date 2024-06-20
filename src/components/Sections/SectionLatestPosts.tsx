@@ -38,7 +38,7 @@ export interface SectionLatestPostsProps {
 const SectionLatestPosts: FC<SectionLatestPostsProps> = ({
   posts = postsDemo,
   postCardName = "card3",
-  heading = "Latest Articles 🎈",
+  heading = "Latest Articles",
   gridClass = "",
   className = "",
 }) => {

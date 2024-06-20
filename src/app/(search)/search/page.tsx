@@ -24,6 +24,9 @@ import CardCategory2 from "@/components/CardCategory2/CardCategory2";
 import Tag from "@/components/Tag/Tag";
 import CardAuthorBox2 from "@/components/CardAuthorBox2/CardAuthorBox2";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
+import useDataFetching from "@/hooks/useDataFetching";
+import LoadingPost from "@/components/LoadingPost/LoadingPost";
+import Eventcard from "@/components/CardEvent/Eventcard";
 
 const posts: PostDataType[] = DEMO_POSTS.filter((_, i) => i < 12);
 const cats = DEMO_CATEGORIES.filter((_, i) => i < 15);
@@ -43,6 +46,7 @@ const TABS = ["Articles", "Categories", "Tags", "Authors"];
 const PageSearch = ({}) => {
   let s = "Technology";
 
+  const { loading, events } = useDataFetching();
   const [tabActive, setTabActive] = useState(TABS[0]);
 
   const handleClickTab = (item: string) => {
@@ -165,14 +169,14 @@ const PageSearch = ({}) => {
           </div>
 
           {/* LOOP ITEMS */}
-          {/* LOOP ITEMS POSTS */}
-          {tabActive === "Articles" && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-8 mt-8 lg:mt-10">
-              {posts.map((post) => (
-                <Card11 key={post.id} post={post} />
-              ))}
-            </div>
-          )}
+          {/* LOOP ITEMS */}
+          {loading && <LoadingPost />}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 mt-8 lg:mt-10">
+            {events.map((event) => (
+              <Eventcard key={event.eventId} event={event} />
+            ))}
+          </div>
+
           {/* LOOP ITEMS CATEGORIES */}
           {tabActive === "Categories" && (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 md:gap-8 mt-8 lg:mt-10">
