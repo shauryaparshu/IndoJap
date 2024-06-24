@@ -28,7 +28,7 @@ const DashboardPosts = () => {
     if (eventToDelete) {
       try {
         const response = await fetch(
-          `https://ksed90trwf.execute-api.us-east-1.amazonaws.com/events/${eventToDelete.eventId}`,
+          `https://g6kl4aeeb0.execute-api.us-east-1.amazonaws.com/events/${eventToDelete.eventId}`,
           {
             method: "DELETE",
           }

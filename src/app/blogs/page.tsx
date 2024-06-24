@@ -28,7 +28,7 @@ const PageSingleTemplate3 = ({}) => {
             <h2 className="inline-block align-middle text-5xl font-semibold md:text-7xl ">
               Blogs
             </h2>
-            <span className="block mt-4 text-neutral-300">2 Blogs</span>
+            <span className="block mt-4 text-neutral-300">3 Blogs</span>
           </div>
         </div>
       </div>

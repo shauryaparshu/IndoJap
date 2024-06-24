@@ -54,9 +54,9 @@ export async function POST(req: Request) {
         Body: buffer,
         ContentType: image.type,
       });
-
+      // https://dev-indojap-site-imageuploadsbucketc6e2667e-7t0ixg2zjveg.s3.amazonaws.com/13f9ee70-288f-4994-96c7-e68a3b54a8d4.jpg
       await s3.send(putObjectCommand);
-      imageURL = `https://dev-indojap-site-imageuploadsbucketc6e2667e-fh1ue9kfotcs.s3.amazonaws.com/${key}`;
+      imageURL = `https://dev-indojap-site-imageuploadsbucketc6e2667e-7t0ixg2zjveg.s3.amazonaws.com/${key}`;
     }
 
     // Created a new item in the DynamoDB table

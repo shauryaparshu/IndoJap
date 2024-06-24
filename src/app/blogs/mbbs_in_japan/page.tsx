@@ -27,7 +27,7 @@ const PageSingleTemplate3 = ({}) => {
           <Image
             className="block w-full h-full object-cover"
             // src="https://images.unsplash.com/photo-1554941068-a252680d25d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
-            src="https://dev-indojap-site-imageuploadsbucketc6e2667e-tz5tcenzwzys.s3.amazonaws.com/Designer+(1).png"
+            src="https://dev-indojap-site-imageuploadsbucketc6e2667e-tz5tcenzwzys.s3.amazonaws.com/MBBSinJapan.jpeg"
             alt="Blog image"
             width={1635}
             height={774}

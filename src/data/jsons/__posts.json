@@ -193,5 +193,24 @@
     "authorId": 9,
     "categoriesId": [2, 18],
     "postType": "standard"
+  },
+  {
+    "index": 10,
+    "id": "eae0e85d-db11-44fa-ac32-6c192f687e0c",
+    "featuredImage": "https://dev-indojap-site-imageuploadsbucketc6e2667e-tz5tcenzwzys.s3.amazonaws.com/MBBSinJapan.jpeg",
+    "title": "MBBS in Japan: Explore Top Universities, Admission Requirements, Career Prospects & More",
+    "date": "June 20, 2024",
+    "time": "10:00 AM",
+    "location": "Tokyo",
+    "price": "¥12",
+    "href": "/blogs/mbbs_in_japan",
+    "commentCount": 14,
+    "viewdCount": 2378,
+    "readingTime": 15,
+    "bookmark": { "count": 3502, "isBookmarked": false },
+    "like": { "count": 773, "isLiked": true },
+    "authorId": 9,
+    "categoriesId": [2, 18],
+    "postType": "standard"
   }
 ]

@@ -37,6 +37,12 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol:"https",
+        hostname:"dev-indojap-site-imageuploadsbucketc6e2667e-7t0ixg2zjveg.s3.amazonaws.com",
+        port:"",
+        pathname:"/**",
+      }
     ],
   },
 };

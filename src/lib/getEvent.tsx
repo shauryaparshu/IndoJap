@@ -1,7 +1,7 @@
 export default async function getEvent(eventId: string) {
   try {
     const res = await fetch(
-      `https://6abuw5509l.execute-api.us-east-1.amazonaws.com/events/${eventId}`
+      `https://g6kl4aeeb0.execute-api.us-east-1.amazonaws.com/events/${eventId}`
     );
 
     if (!res.ok) {

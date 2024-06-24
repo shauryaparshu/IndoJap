@@ -125,7 +125,7 @@ export default function UpdatePost({ params: { eventId } }: Params) {
       });
 
       const response = await fetch(
-        `https://ksed90trwf.execute-api.us-east-1.amazonaws.com/events/${formData.eventId}`,
+        `https://g6kl4aeeb0.execute-api.us-east-1.amazonaws.com/events/${formData.eventId}`,
         {
           method: "PUT",
           body: formDataToSend,
