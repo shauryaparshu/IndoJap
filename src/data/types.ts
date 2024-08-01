@@ -42,11 +42,25 @@ export interface Event {
   location: string;
   price: string;
   imageURL: string;
+  posterURL:string;
   categories: string;
   tags: string;
   postContent: string;
   createdAt: string;
 }
+
+export interface Blog {
+  blogId: string,
+  title: string,
+  content: string,
+  imageURL: string,
+  category: string,
+  readingTime:string,
+  author: string,
+  createdAt: number,
+  updatedAt: number,
+}
+
 export interface PostDataType {
   id: string | number;
   author: PostAuthorType;

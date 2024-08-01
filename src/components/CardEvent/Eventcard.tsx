@@ -26,7 +26,7 @@ const Eventcard: FC<EventcardProps> = ({
   hiddenAuthor = false,
   ratio = "aspect-w-5 aspect-h-3",
 }) => {
-  const { title, categories, dateTime, location, price, eventId, imageURL } =
+  const { title, categories, dateTime, location, price, eventId, imageURL, desc } =
     event;
 
   const [isHover, setIsHover] = useState(false);
@@ -76,7 +76,7 @@ const Eventcard: FC<EventcardProps> = ({
         {/* <PostCardMeta meta={event} /> */}
 
         <div className="flex items-end justify-between mt-auto">
-          <PostCardLikeAndComment className="relative" />
+          {/* <PostCardLikeAndComment className="relative" /> */}
           <div className="text-right">
             <span className="text-lg ">¥ {price}</span>
           </div>

@@ -1,5 +1,9 @@
 import { SSTConfig } from "sst";
 import { NextjsSite, Table, Api, Bucket } from "sst/constructs";
+import * as cdk from "aws-cdk-lib";
+
+const ROOT_DOMAIN_NAME = "indiajapanguide.com";
+const DOMAIN_NAME = `${ROOT_DOMAIN_NAME}`;
 
 export default {
   config(_input) {
@@ -7,11 +11,22 @@ export default {
       name: "IndoJap",
       region: "us-east-1",
     };
-  },
+  }, 
   stacks(app) {
     app.stack(function Site({ stack }) {
-      //database to store all Events
-      const table = new Table(stack, "Event_Table", {
+      // Create a hosted zone on your domain name
+      const hostedZone = new cdk.aws_route53.HostedZone(stack, "HostedZone", {
+        zoneName: ROOT_DOMAIN_NAME,
+      });
+
+      // Create an SSL certificate linked to the hosted zone
+      const certificate = new cdk.aws_certificatemanager.Certificate(stack, "Certificate", {
+        domainName: DOMAIN_NAME,
+        validation: cdk.aws_certificatemanager.CertificateValidation.fromDns(hostedZone),
+      });
+
+      // Create a table for events
+      const eventTable = new Table(stack, "Event_Table", {
         fields: {
           eventId: "string",
           title: "string",
@@ -20,6 +35,7 @@ export default {
           location: "string",
           price: "string",
           imageURL: "string",
+          posterURL:"string",
           categories: "string",
           postContent: "string",
           createdAt: "number",
@@ -27,11 +43,31 @@ export default {
         primaryIndex: { partitionKey: "eventId" },
       });
 
-      //Api for CRUD operations
+      // Create a table for blogs
+      const blogTable = new Table(stack, "Blog_Table", {
+        fields: {
+          blogId: "string",
+          title: "string",
+          content: "string",
+          imageURL: "string",
+          category: "string",
+          readingTime:"string",
+          author: "string",
+          createdAt: "number",
+          updatedAt: "number",
+        },
+        primaryIndex: { partitionKey: "blogId" },
+      });
+
+      // Create an API for CRUD operations
       const api = new Api(stack, "Api", {
         defaults: {
           function: {
-            bind: [table],
+            bind: [eventTable, blogTable],
+            environment: {
+              EMAIL_USER: process.env.EMAIL_USER || "",
+              EMAIL_PASS: process.env.EMAIL_PASS || "",
+            },
           },
         },
         // Enable CORS for all methods
@@ -41,25 +77,38 @@ export default {
           allowHeaders: ["*"],
         },
         routes: {
+          // Events routes
           "GET /events": "src/app/_lambda/events/handler.GET",
           "POST /events": "src/app/_lambda/events/handler.POST",
-          "GET /events/{eventId}":
-            "src/app/_lambda/events/handler.GET_EVENT_BY_ID",
-          "PUT /events/{eventId}":
-            "src/app/_lambda/events/handler.PUT_EVENT_BY_ID",
-          "DELETE /events/{eventId}":
-            "src/app/_lambda/events/handler.DELETE_EVENT_BY_ID",
+          "GET /events/{eventId}": "src/app/_lambda/events/handler.GET_EVENT_BY_ID",
+          "PUT /events/{eventId}": "src/app/_lambda/events/handler.PUT_EVENT_BY_ID",
+          "DELETE /events/{eventId}": "src/app/_lambda/events/handler.DELETE_EVENT_BY_ID",
+          // "GET /events/search": "src/app/_lambda/events/handler.SEARCH_EVENTS",
+
+          // Blogs routes
+          "GET /blogs": "src/app/_lambda/blogs/handler.GET",
+          "POST /blogs": "src/app/_lambda/blogs/handler.POST",
+          "GET /blogs/{blogId}": "src/app/_lambda/blogs/handler.GET_BLOG_BY_ID",
+          "PUT /blogs/{blogId}": "src/app/_lambda/blogs/handler.PUT_BLOG_BY_ID",
+          "DELETE /blogs/{blogId}": "src/app/_lambda/blogs/handler.DELETE_BLOG_BY_ID",
         },
       });
 
-      //S3 bucket to store images in aws
+      // Create an S3 bucket for image uploads
       const bucket = new Bucket(stack, "ImageUploads");
 
-      //Binding Nextjs to aws
+      // Bind Next.js site to AWS
       const site = new NextjsSite(stack, "site", {
-        bind: [table, api, bucket],
+        bind: [eventTable, blogTable, api, bucket],
+        customDomain: {
+          domainName: DOMAIN_NAME,
+          cdk: {
+            hostedZone,
+            certificate,
+          },
+        },
       });
-      site.attachPermissions([table]);
+      site.attachPermissions([eventTable, blogTable]);
 
       stack.addOutputs({
         SiteUrl: site.url,
@@ -68,11 +117,13 @@ export default {
     });
   },
 } satisfies SSTConfig;
+
 // import { SSTConfig } from "sst";
 // import { NextjsSite, Table, Api, Bucket } from "sst/constructs";
 // import * as cdk from "aws-cdk-lib";
 
-// const DOMAIN_NAME = "indiajapanguide.com";
+// const ROOT_DOMAIN_NAME = "indiajapanguide.com";
+// const DOMAIN_NAME = `${ROOT_DOMAIN_NAME}`;
 
 // export default {
 //   config(_input) {
@@ -80,22 +131,22 @@ export default {
 //       name: "IndoJap",
 //       region: "us-east-1",
 //     };
-//   },
+//   }, 
 //   stacks(app) {
 //     app.stack(function Site({ stack }) {
-
 //       // Create a hosted zone on your domain name
 //       const hostedZone = new cdk.aws_route53.HostedZone(stack, "HostedZone", {
-//         zoneName: DOMAIN_NAME,
+//         zoneName: ROOT_DOMAIN_NAME,
 //       });
-//       // Create a SSL certificate linked to the hosted zone
+
+//       // Create an SSL certificate linked to the hosted zone
 //       const certificate = new cdk.aws_certificatemanager.Certificate(stack, "Certificate", {
 //         domainName: DOMAIN_NAME,
 //         validation: cdk.aws_certificatemanager.CertificateValidation.fromDns(hostedZone),
 //       });
 
-//       //database to store all Events
-//       const table = new Table(stack, "Event_Table", {
+//       // Create a table for events
+//       const eventTable = new Table(stack, "Event_Table", {
 //         fields: {
 //           eventId: "string",
 //           title: "string",
@@ -104,6 +155,7 @@ export default {
 //           location: "string",
 //           price: "string",
 //           imageURL: "string",
+//           posterURL:"string",
 //           categories: "string",
 //           postContent: "string",
 //           createdAt: "number",
@@ -111,11 +163,27 @@ export default {
 //         primaryIndex: { partitionKey: "eventId" },
 //       });
 
-//       //Api for CRUD operations
+//       // Create a table for blogs
+//       const blogTable = new Table(stack, "Blog_Table", {
+//         fields: {
+//           blogId: "string",
+//           title: "string",
+//           content: "string",
+//           imageURL: "string",
+//           category: "string",
+//           readingTime:"string",
+//           author: "string",
+//           createdAt: "number",
+//           updatedAt: "number",
+//         },
+//         primaryIndex: { partitionKey: "blogId" },
+//       });
+
+//       // Create an API for CRUD operations
 //       const api = new Api(stack, "Api", {
 //         defaults: {
 //           function: {
-//             bind: [table],
+//             bind: [eventTable, blogTable],
 //           },
 //         },
 //         // Enable CORS for all methods
@@ -125,36 +193,36 @@ export default {
 //           allowHeaders: ["*"],
 //         },
 //         routes: {
+//           // Events routes
 //           "GET /events": "src/app/_lambda/events/handler.GET",
 //           "POST /events": "src/app/_lambda/events/handler.POST",
-//           "GET /events/{eventId}":
-//             "src/app/_lambda/events/handler.GET_EVENT_BY_ID",
-//           "PUT /events/{eventId}":
-//             "src/app/_lambda/events/handler.PUT_EVENT_BY_ID",
-//           "DELETE /events/{eventId}":
-//             "src/app/_lambda/events/handler.DELETE_EVENT_BY_ID",
+//           "GET /events/{eventId}": "src/app/_lambda/events/handler.GET_EVENT_BY_ID",
+//           "PUT /events/{eventId}": "src/app/_lambda/events/handler.PUT_EVENT_BY_ID",
+//           "DELETE /events/{eventId}": "src/app/_lambda/events/handler.DELETE_EVENT_BY_ID",
+//           // Blogs routes
+//           "GET /blogs": "src/app/_lambda/blogs/handler.GET",
+//           "POST /blogs": "src/app/_lambda/blogs/handler.POST",
+//           "GET /blogs/{blogId}": "src/app/_lambda/blogs/handler.GET_BLOG_BY_ID",
+//           "PUT /blogs/{blogId}": "src/app/_lambda/blogs/handler.PUT_BLOG_BY_ID",
+//           "DELETE /blogs/{blogId}": "src/app/_lambda/blogs/handler.DELETE_BLOG_BY_ID",
 //         },
 //       });
 
-//       //S3 bucket to store images in aws
+//       // Create an S3 bucket for image uploads
 //       const bucket = new Bucket(stack, "ImageUploads");
 
-//       //Binding Nextjs to aws
+//       // Bind Next.js site to AWS
 //       const site = new NextjsSite(stack, "site", {
-//         bind: [table, api, bucket],
+//         bind: [eventTable, blogTable, api, bucket],
 //         customDomain: {
 //           domainName: DOMAIN_NAME,
 //           cdk: {
 //             hostedZone,
 //             certificate,
-//           }
-//         }
-//         // customDomain: {
-//         //   domainName: "indiajapanguide.com",
-//         //   domainAlias: "www.indiajapanguide.com",
-//         // },
+//           },
+//         },
 //       });
-//       site.attachPermissions([table]);
+//       site.attachPermissions([eventTable, blogTable]);
 
 //       stack.addOutputs({
 //         SiteUrl: site.url,
@@ -163,3 +231,4 @@ export default {
 //     });
 //   },
 // } satisfies SSTConfig;
+

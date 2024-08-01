@@ -100,14 +100,14 @@ export const MEGAMENU_TEMPLATES: NavItemType[] = [
       },
     ],
   },
-
+  
   // others pages ----------------
   {
     id: randomId(),
     href: "/#",
     name: "Other Pages",
     children: [
-      { id: randomId(), href: "/dashboard", name: "Dashboard" },
+      { id: randomId(), href: "/41878404-66c3-4982-b0e6-7500a4597c49dashboard", name: "Dashboard" },
       { id: randomId(), href: "/about", name: "About" },
       { id: randomId(), href: "/contact", name: "Contact us" },
       {
@@ -235,23 +235,23 @@ const OTHER_PAGE_CHILD: NavItemType[] = [
   // dashboard pages ----------------
   {
     id: randomId(),
-    href: "/dashboard",
+    href: "/41878404-66c3-4982-b0e6-7500a4597c49dashboard",
     name: "Dashboard Page",
     type: "dropdown",
     children: [
       {
         id: randomId(),
-        href: "/dashboard/edit-profile",
+        href: "/41878404-66c3-4982-b0e6-7500a4597c49dashboard/edit-profile",
         name: "Edit profile page",
       },
       {
         id: randomId(),
-        href: "/dashboard/posts",
+        href: "/41878404-66c3-4982-b0e6-7500a4597c49dashboard/posts",
         name: "Posts page",
       },
       {
         id: randomId(),
-        href: "/dashboard/submit-post",
+        href: "/41878404-66c3-4982-b0e6-7500a4597c49dashboard/submit-post",
         name: "Submit post page",
       },
     ],
@@ -313,37 +313,37 @@ export const NAVIGATION_DEMO_2: NavItemType[] = [
     name: "Blogs",
   },
 
-  {
-    id: randomId(),
-    href: "/single-gallery/demo-slug" as Route,
-    name: "Study In Japan",
-  },
+  // {
+  //   id: randomId(),
+  //   href: "/single-gallery/demo-slug" as Route,
+  //   name: "Study In Japan",
+  // },
   {
     id: randomId(),
     href: "/about",
     name: "About Us",
   },
-  {
-    id: randomId(),
-    href: "/search",
-    name: "Explore",
-    type: "dropdown",
-    children: [
-      {
-        id: randomId(),
-        href: "/dashboard",
-        name: "Dashboard",
-      },
-      {
-        id: randomId(),
-        href: "/contact",
-        name: "Contact us",
-      },
-      {
-        id: randomId(),
-        href: "/forgot-pass",
-        name: "Forgot password",
-      },
-    ],
-  },
+  // {
+  //   id: randomId(),
+  //   href: "/search",
+  //   name: "Explore",
+  //   type: "dropdown",
+  //   children: [
+  //     {
+  //       id: randomId(),
+  //       href: "/dashboard",
+  //       name: "Dashboard",
+  //     },
+  //     {
+  //       id: randomId(),
+  //       href: "/contact",
+  //       name: "Contact us",
+  //     },
+  //     {
+  //       id: randomId(),
+  //       href: "/forgot-pass",
+  //       name: "Forgot password",
+  //     },
+  //   ],
+  // },
 ];

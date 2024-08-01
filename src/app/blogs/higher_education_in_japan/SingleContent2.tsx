@@ -84,6 +84,7 @@ const SingleContent: FC<SingleContentProps> = ({}) => {
 
         {/* TAGS */}
         <div className="max-w-screen-md mx-auto flex flex-wrap">
+        <div ref={endedAnchorRef}></div>
           {demoTags.map((item) => (
             <Tag hideCount key={item.id} tag={item} className="me-2 mb-2" />
           ))}
@@ -96,7 +97,7 @@ const SingleContent: FC<SingleContentProps> = ({}) => {
         </div> */}
 
         {/* COMMENT FORM */}
-        <div
+        {/* <div
           id="comments"
           className="scroll-mt-20 max-w-screen-md mx-auto pt-5"
         >
@@ -104,13 +105,13 @@ const SingleContent: FC<SingleContentProps> = ({}) => {
             Responses (10)
           </h3>
           <SingleCommentForm />
-        </div>
+        </div> */}
 
         {/* COMMENTS LIST */}
-        <div className="max-w-screen-md mx-auto">
+        {/* <div className="max-w-screen-md mx-auto">
           <SingleCommentLists />
           <div ref={endedAnchorRef}></div>
-        </div>
+        </div> */}
       </div>
       <div
         className={`sticky mt-8 bottom-8 z-40 justify-center ${

@@ -46,7 +46,7 @@ const PageSingleTemplate3 = ({}) => {
         </div>
 
         {/* RELATED POSTS */}
-        <SingleRelatedPosts />
+        {/* <SingleRelatedPosts /> */}
       </div>
     </>
   );

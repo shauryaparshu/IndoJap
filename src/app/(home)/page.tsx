@@ -31,6 +31,8 @@ import LoadingPost from "@/components/LoadingPost/LoadingPost";
 import Eventcard from "@/components/CardEvent/Eventcard";
 import getAllEvents from "@/lib/getAllEvents";
 import { Event } from "@/data/types";
+import getAllBlogs from "@/lib/getAllBlogs";
+import AdBanner from "@/components/Sections/AdBanner";
 
 // DEMO DATA
 const POSTS = DEMO_POSTS;
@@ -46,15 +48,24 @@ const PageHomeDemo3: React.FC = async () => {
     { name: "Most Discussed" },
     { name: "Most Viewed" },
   ];
+  // const eventData = await getAllEvents();
+  // const events = eventData.Items;
+
+  // const blogData = await getAllBlogs();
+  // const blogs = blogData.Items;
+  
   const eventData = await getAllEvents();
-  const events = eventData.Items;
+  const events = eventData.Items.slice(0, 4); // Limit to 4 events
+
+  const blogData = await getAllBlogs();
+  const blogs = blogData.Items.slice(0, 4);
   return (
     <div className="nc-PageHomeDemo3 relative">
       <div className="container relative">
         {/* hero section */}
         <SectionHero
           rightImg={rightImg}
-          className="pt-10 pb-16 md:py-16 lg:pb-28 lg:pt-20"
+          // className="pt-10 pb-16 md:py-16 lg:pb-28 lg:pt-20"
           heading={
             <span>
               Discover Vibrant Indian Events in
@@ -69,16 +80,26 @@ const PageHomeDemo3: React.FC = async () => {
 
         {/* Events section */}
         <div>
-          <h2 className="font-semibold text-4xl"> Events </h2>
+          {/* <h2 className="font-semibold text-4xl"> Events </h2>
+          <span className="mt-2 md:mt-3 font-normal block text-base sm:text-xl text-neutral-500 dark:text-neutral-400">
+          Join the most exciting events in Japan hosted by the Indian community.
+          </span> */}
           <br />
           <div className="flex flex-col sm:justify-between sm:flex-row">
+            
+        <Heading desc="Join the most exciting events in Japan hosted by the Indian community.">Events </Heading>
             <div className="flex space-x-2.5 rtl:space-x-reverse">
               <ModalCategories categories={DEMO_CATEGORIES} />
               <ModalTags tags={DEMO_TAGS} />
             </div>
             <div className="block my-4 border-b w-full border-neutral-300 dark:border-neutral-500 sm:hidden"></div>
             <div className="flex justify-end">
-              <ArchiveFilterListBox lists={FILTERS} />
+            {/* <ModalTags tags={DEMO_TAGS} />  */}
+            
+            {/* categories */}
+            {/* <ModalCategories categories={DEMO_CATEGORIES} /> */}
+            
+              {/* <ArchiveFilterListBox lists={FILTERS} /> */}
             </div>
           </div>
 
@@ -91,11 +112,15 @@ const PageHomeDemo3: React.FC = async () => {
               ))}
             </div>
           </Suspense>
+          {/* Show more events button */}
+          {/* <div className="flex justify-center mt-8">
+            <ButtonPrimary href="/events">Show more events</ButtonPrimary>
+          </div> */}
 
           {/* PAGINATIONS */}
           <div className="flex flex-col mt-12 lg:mt-16 space-y-5 sm:space-y-0 sm:space-x-3 sm:flex-row sm:justify-between sm:items-center">
-            <Pagination />
-            <ButtonPrimary>Show me more</ButtonPrimary>
+            {/* <Pagination /> */}
+            <ButtonPrimary href="/events">Show more events</ButtonPrimary>
           </div>
         </div>
         <br />
@@ -108,13 +133,19 @@ const PageHomeDemo3: React.FC = async () => {
 
         <div className="relative py-16">
           <BackgroundSection />
-          <SectionLatestPosts className="pb-16 lg:pb-28" />
+          <SectionLatestPosts blogs={blogs} className="pb-16 lg:pb-28" />
+          <div className="flex flex-col mt-8 lg:mt-12 space-y-5 sm:space-y-0 sm:space-x-3 sm:flex-row sm:justify-between sm:items-center">
+             <ButtonPrimary href="/blogs">Show more blogs</ButtonPrimary>
+          </div>
+
         </div>
-
+         
         {/* <SectionAds /> */}
-
+        <div className="mb-5">
+        <AdBanner dataAdSlot="1366850428" dataAdFormat="auto" dataFullWidthResponsive={true}/>
+        </div>
         {/* NewsLetter */}
-        <SectionSubscribe2 className="pb-16 lg:pb-28" />
+        {/* <SectionSubscribe2 className="pb-16 lg:pb-28" /> */}
       </div>
     </div>
   );

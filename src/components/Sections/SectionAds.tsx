@@ -1,3 +1,4 @@
+"use client";
 import React, { FC } from "react";
 import imgAdsDef from "@/images/ads.png";
 import Image, { StaticImageData } from "next/image";

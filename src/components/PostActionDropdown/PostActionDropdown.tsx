@@ -25,16 +25,16 @@ const PostActionDropdown: FC<PostActionDropdownProps> = ({
       name: "Copy link",
       icon: <FaLink className="w-6 h-6" />,
     },
-    {
-      id: "commentThisArticle",
-      name: "Comment this article",
-      icon: <FaCommentDots className="w-6 h-6" />,
-    },
-    {
-      id: "hideThisAuthor",
-      name: "Hide this author",
-      icon: <FaUserSlash className="w-6 h-6" />,
-    },
+    // {
+    //   id: "commentThisArticle",
+    //   name: "Comment this article",
+    //   icon: <FaCommentDots className="w-6 h-6" />,
+    // },
+    // {
+    //   id: "hideThisAuthor",
+    //   name: "Hide this author",
+    //   icon: <FaUserSlash className="w-6 h-6" />,
+    // },
     {
       id: "reportThisArticle",
       name: "Report this article",

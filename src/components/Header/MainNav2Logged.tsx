@@ -9,6 +9,7 @@ import SearchModal from "./SearchModal";
 import NotifyDropdown from "./NotifyDropdown";
 import SwitchDarkMode from "../SwitchDarkMode/SwitchDarkMode";
 import Button from "../Button/Button";
+import IJGLogo from "@/images/IJG-logo.png";
 
 export interface MainNav2LoggedProps {}
 
@@ -22,6 +23,7 @@ const MainNav2Logged: FC<MainNav2LoggedProps> = () => {
 
         <div className="lg:flex-1 flex items-center">
           <Logo />
+          
         </div>
 
         <div className="flex-[2] hidden lg:flex justify-center mx-4">
@@ -33,14 +35,14 @@ const MainNav2Logged: FC<MainNav2LoggedProps> = () => {
             <div className="hidden items-center lg:flex">
               <SwitchDarkMode />
               <SearchModal />
-              <div className="px-1"></div>
+              {/* <div className="px-1"></div>
               <Button
                 sizeClass="py-3 px-4 sm:px-6"
                 href="/login"
                 pattern="primary"
               >
                 Sign up
-              </Button>
+              </Button> */}
             </div>
             <div className="flex items-center lg:hidden">
               <SwitchDarkMode />

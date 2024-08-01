@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* globals.css */
+a.responsive-link {
+    @apply hover:text-blue-800 break-words;
+  }
+  

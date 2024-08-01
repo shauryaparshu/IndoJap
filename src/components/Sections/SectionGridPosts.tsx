@@ -47,14 +47,7 @@ const SectionGridPosts: FC<SectionGridPostsProps> = ({
 }) => {
   const renderCard = (post: PostDataType) => {
     switch (postCardName) {
-      case "card3":
-        return (
-          <Card3
-            key={post.id}
-            className="p-3 sm:p-5 2xl:p-6 [ nc-box-has-hover ] [ nc-dark-box-bg-has-hover ]"
-            post={post}
-          />
-        );
+      
       case "card4":
         return <Card4 key={post.id} post={post} />;
       case "card7":

@@ -10,10 +10,8 @@ import {
   FaFacebook,
   FaTwitter,
   FaWhatsapp,
-  FaInstagram,
   FaLink,
 } from "react-icons/fa";
-import PostCardLikeAndComment from "@/components/PostCardLikeAndComment/PostCardLikeAndComment";
 import NcDropDown from "@/components/NcDropDown/NcDropDown";
 import NcBookmark from "@/components/NcBookmark/NcBookmark";
 import PostActionDropdown from "@/components/PostActionDropdown/PostActionDropdown";
@@ -88,18 +86,8 @@ const SingleMetaAction2: FC<SingleMetaAction2Props> = ({ className = "" }) => {
   ];
 
   return (
-    <div className={`nc-SingleMetaAction2 ${className}`}>
+    <div className={`nc-SingleMetaAction2 ${className} flex justify-end`}>
       <div className="flex flex-row space-x-2.5 rtl:space-x-reverse items-center">
-        <PostCardLikeAndComment
-          itemClass="px-4 h-9 text-sm"
-          // hiddenCommentOnMobile
-          useOnSinglePage
-          className="!space-x-2.5 rtl:!space-x-reverse"
-        />
-        {/* <div className="px-1">
-          <div className="border-s border-neutral-200 dark:border-neutral-700 h-6" />
-        </div> */}
-
         <NcBookmark containerClassName="h-9 w-9 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-200" />
         <NcDropDown
           className="flex-shrink-0 flex items-center justify-center focus:outline-none h-9 w-9 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-200 rounded-full"

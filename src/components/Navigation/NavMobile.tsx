@@ -169,8 +169,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
         <Logo />
         <div className="flex flex-col mt-5 text-slate-600 dark:text-slate-300 text-sm">
           <span>
-            Discover the most outstanding articles on all topics of life. Write
-            your stories and share them
+          Explore a world of Indian culture, traditions, and experiences right here in Japan!
           </span>
 
           <br />
@@ -201,11 +200,11 @@ const NavMobile: React.FC<NavMobileProps> = ({
                 Sign up
               </Button> */}
 
-      <div className="flex items-center justify-between py-6 px-5 space-x-2 rtl:space-x-reverse">
+      {/* <div className="flex items-center justify-between py-6 px-5 space-x-2 rtl:space-x-reverse">
         <ButtonPrimary className="!px-10 relative"  href="/login" >
            Sign up
         </ButtonPrimary>
-      </div>
+      </div> */}
     </div>
   );
 };

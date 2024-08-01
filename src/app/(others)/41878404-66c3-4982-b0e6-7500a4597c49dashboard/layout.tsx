@@ -8,27 +8,39 @@ import React, { ReactNode } from "react";
 
 const subPages: { href: Route; pageName: string; emoij: string }[] = [
   {
-    href: "/dashboard",
+    href: "/41878404-66c3-4982-b0e6-7500a4597c49dashboard",
     emoij: "⏳",
     pageName: "Dash board",
   },
   {
-    href: "/dashboard/edit-profile",
+    href: "/41878404-66c3-4982-b0e6-7500a4597c49dashboard/edit-profile",
 
     emoij: "🛠",
     pageName: "Edit profile",
   },
   {
-    href: "/dashboard/submit-post",
+    href: "/41878404-66c3-4982-b0e6-7500a4597c49dashboard/submit-post",
 
-    emoij: "✍",
-    pageName: "Submit post",
+    emoij: "✍️",
+    pageName: "Submit event",
   },
   {
-    href: "/dashboard/posts",
+    href: "/41878404-66c3-4982-b0e6-7500a4597c49dashboard/submit-blog",
+
+    emoij: "📰",
+    pageName: "Submit blog",
+  },
+  {
+    href: "/41878404-66c3-4982-b0e6-7500a4597c49dashboard/posts",
 
     emoij: "📕",
-    pageName: "Posts",
+    pageName: "Events",
+  },
+  {
+    href: "/41878404-66c3-4982-b0e6-7500a4597c49dashboard/blogs",
+
+    emoij: "📰",
+    pageName: "Blogs",
   },
 ];
 

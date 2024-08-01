@@ -14,9 +14,9 @@ const LayoutPage = ({ children }: { children: ReactNode }) => {
         </div>
       </div>
 
-      <div className="container pb-16 lg:pb-28">
+      {/* <div className="container pb-16 lg:pb-28">
         <SectionSubscribe2 />
-      </div>
+      </div> */}
     </div>
   );
 };

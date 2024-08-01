@@ -20,7 +20,8 @@ import Image from "next/image";
 // import useDataFetching from "@/hooks/useDataFetching";
 import LoadingPost from "@/components/LoadingPost/LoadingPost";
 import getAllEvents from "@/lib/getAllEvents";
-import { Suspense } from "react";
+import { Suspense } from "react"; 
+import { eventNames } from "process";
 
 export const revalidate = 0;
 const PageArchive = async ({}) => {
@@ -35,6 +36,8 @@ const PageArchive = async ({}) => {
     { name: "Most Discussed" },
     { name: "Most Viewed" },
   ];
+  const sortedEvents = [...events].sort((a, b) => new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime());
+
 
   if (!events) {
     return <p>Events not found!</p>;
@@ -81,22 +84,22 @@ const PageArchive = async ({}) => {
           {/* {loading && <LoadingPost />} */}
           <Suspense fallback={<LoadingPost />}>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 mt-8 lg:mt-10">
-              {events.map((event: Event) => (
+              {sortedEvents.map((event: Event) => (
                 <Eventcard key={event.eventId} event={event} />
               ))}
             </div>
           </Suspense>
 
           {/* PAGINATIONS */}
-          <div className="flex flex-col mt-12 lg:mt-16 space-y-5 sm:space-y-0 sm:space-x-3 sm:flex-row sm:justify-between sm:items-center">
+          {/* <div className="flex flex-col mt-12 lg:mt-16 space-y-5 sm:space-y-0 sm:space-x-3 sm:flex-row sm:justify-between sm:items-center">
             <Pagination />
             <ButtonPrimary>Show me more</ButtonPrimary>
-          </div>
+          </div> */}
         </div>
 
         {/* MORE SECTIONS */}
         {/* === SECTION 5 === */}
-        <div className="relative py-16">
+        {/* <div className="relative py-16">
           <BackgroundSection />
           <SectionGridCategoryBox
             categories={DEMO_CATEGORIES.filter((_, i) => i < 10)}
@@ -104,17 +107,17 @@ const PageArchive = async ({}) => {
           <div className="text-center mx-auto mt-10 md:mt-16">
             <ButtonSecondary loading>Show me more</ButtonSecondary>
           </div>
-        </div>
+        </div> */}
 
         {/* === SECTION 5 === */}
-        <SectionSliderNewAuthors
+        {/* <SectionSliderNewAuthors
           heading="Top elite authors"
           subHeading="Discover our elite writers"
           authors={DEMO_AUTHORS.filter((_, i) => i < 10)}
-        />
+        /> */}
 
         {/* SUBCRIBES */}
-        <SectionSubscribe2 />
+        {/* <SectionSubscribe2 /> */}
       </div>
     </div>
   );

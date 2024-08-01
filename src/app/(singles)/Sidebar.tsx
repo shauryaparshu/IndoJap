@@ -23,7 +23,6 @@ export const Sidebar: FC<SidebarProps> = ({ className = "space-y-6 " }) => {
       <WidgetTags tags={tags} />
       <WidgetCategories categories={categories} />
       <WidgetAuthors authors={authors} />
-      <WidgetPosts posts={widgetPosts} />
     </div>
   );
 };

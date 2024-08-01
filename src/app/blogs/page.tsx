@@ -6,13 +6,21 @@ import SingleRelatedPosts from "./SingleRelatedPosts";
 import { Sidebar } from "./Sidebar";
 import SectionLatestPosts from "@/components/Sections/SectionLatestPosts";
 import BackgroundSection from "@/components/BackgroundSection/BackgroundSection";
+import getAllblogs from "@/lib/getAllBlogs";
 
 // export interface PageSingleTemplate3Props {
 //   children: ReactNode;
 // }
+export const revalidate = 0;
 
 // const PageSingleTemplate3: FC<PageSingleTemplate3Props> = ({ children }) => {
-const PageSingleTemplate3 = ({}) => {
+const PageSingleTemplate3 = async ({}) => {
+  const blogData = await getAllblogs();
+  const blogs = blogData.Items;
+  if (!blogs) {
+    return <p>Blogs not found!</p>;
+  }
+
   return (
     <>
       <div className="w-full px-2 xl:max-w-screen-2xl mx-auto pt-2">
@@ -28,7 +36,7 @@ const PageSingleTemplate3 = ({}) => {
             <h2 className="inline-block align-middle text-5xl font-semibold md:text-7xl ">
               Blogs
             </h2>
-            <span className="block mt-4 text-neutral-300">3 Blogs</span>
+            <span className="block mt-4 text-neutral-300">{blogs.length} Blogs</span>
           </div>
         </div>
       </div>
@@ -37,7 +45,7 @@ const PageSingleTemplate3 = ({}) => {
         <div className="container relative">
           <div className="relative py-16">
             <BackgroundSection />
-            <SectionLatestPosts className="pb-16 lg:pb-28" />
+            <SectionLatestPosts blogs={blogs} className="pb-16 lg:pb-28" />
           </div>
         </div>
       </div>
