@@ -33,6 +33,7 @@ import getAllEvents from "@/lib/getAllEvents";
 import { Event } from "@/data/types";
 import getAllBlogs from "@/lib/getAllBlogs";
 import AdBanner from "@/components/Sections/AdBanner";
+import moment from 'moment';
 
 // DEMO DATA
 const POSTS = DEMO_POSTS;
@@ -59,6 +60,8 @@ const PageHomeDemo3: React.FC = async () => {
 
   const blogData = await getAllBlogs();
   const blogs = blogData.Items.slice(0, 4);
+  const sortedEvents: Event[] = [...events].sort((a, b) => moment(a.dateTime, 'ddd, MMM D • h:mm A').unix() - moment(b.dateTime, 'ddd, MMM D • h:mm A').unix());
+
   return (
     <div className="nc-PageHomeDemo3 relative">
       <div className="container relative">
@@ -89,8 +92,8 @@ const PageHomeDemo3: React.FC = async () => {
             
         <Heading desc="Join the most exciting events in Japan hosted by the Indian community.">Events </Heading>
             <div className="flex space-x-2.5 rtl:space-x-reverse">
-              <ModalCategories categories={DEMO_CATEGORIES} />
-              <ModalTags tags={DEMO_TAGS} />
+              {/* <ModalCategories categories={DEMO_CATEGORIES} /> */}
+               {/* <ModalTags tags={DEMO_TAGS} />  */}
             </div>
             <div className="block my-4 border-b w-full border-neutral-300 dark:border-neutral-500 sm:hidden"></div>
             <div className="flex justify-end">
@@ -107,7 +110,7 @@ const PageHomeDemo3: React.FC = async () => {
           {/* {loading && <LoadingPost />} */}
           <Suspense fallback={<LoadingPost />}>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 mt-8 lg:mt-10">
-              {events.map((event: Event) => (
+              {sortedEvents.map((event: Event) => (
                 <Eventcard key={event.eventId} event={event} />
               ))}
             </div>

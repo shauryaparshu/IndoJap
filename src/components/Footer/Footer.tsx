@@ -144,9 +144,6 @@ import MusicPlayer from "../MusicPlayer/MusicPlayer";
 const Footer: React.FC = () => {
   return (
     <>
-      {/* Music Player */}
-      <MusicPlayer />
-
       {/* Footer */}
       <div className="nc-Footer relative py-16 lg:py-28 border-t border-neutral-200 dark:border-neutral-700">
         <div className="container text-center">
@@ -159,13 +156,16 @@ const Footer: React.FC = () => {
             />
           </div>
 
-          {/* Contact Information */}
-          {/* <div className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">IndoJap</h2>
-            <p className="text-sm">Address Line 1, Address Line 2</p>
-            <p className="text-sm">Email: info@example.com</p>
-            <p className="text-sm">Phone: +1 123-456-7890</p>
-          </div> */}
+          {/* Essential Links */}
+          <div className="mb-8">
+            <ul className="flex justify-center space-x-6">
+              <li><a href="/" className="text-sm hover:underline">Home</a></li>
+              <li><a href="/about" className="text-sm hover:underline">About Us</a></li>
+              <li><a href="/privacypolicy" className="text-sm hover:underline">Privacy Policy</a></li>
+              <li><a href="/contact" className="text-sm hover:underline">Contact Us</a></li>
+              <li><a href="/terms" className="text-sm hover:underline">Terms of Service</a></li>
+            </ul>
+          </div>
 
           {/* Copyright */}
           <div className="mt-4 pt-10">

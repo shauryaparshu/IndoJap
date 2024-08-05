@@ -17,6 +17,7 @@ export const revalidate = 0;
 const PageSingleTemplate3 = async ({}) => {
   const blogData = await getAllblogs();
   const blogs = blogData.Items;
+
   if (!blogs) {
     return <p>Blogs not found!</p>;
   }

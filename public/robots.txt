@@ -1,0 +1,13 @@
+# Allow all user agents
+User-agent: *
+Allow: /
+
+# Specify host
+Host: https://indiajapanguide.com
+
+# Specify sitemap
+Sitemap: https://indiajapanguide.com/sitemap.xml
+
+# Explicitly allow Google AdSense bot
+User-agent: AdsBot-Google
+Allow: /

@@ -71,25 +71,24 @@ const DashboardSubmitPost = () => {
   };
 
   const categories = [
-    "Garden",
-    "Food",
-    "Cultural",
-    "Industrial",
-    "Tools",
-    "Devotion",
     "Automotive",
-    "Toys",
-    "Outdoors",
-    "Health",
-    "Electronics",
-    "Sports",
-    "Tech",
-    "Design",
     "Beauty",
     "Books",
+    "Computers",
+    "Cultural",
+    "Devotion",
+    "Education",
+    "Electronics",
+    "Food",
+    "Health",
+    "Interaction",
+    "Industrial",
     "Lifestyle",
-    "Graphic Design",
+    "Sports",
+    "Tools",
+    "Workshops"
   ];
+  
 
   const formatDateTime = (e:any) => {
     const input = e.target.value;

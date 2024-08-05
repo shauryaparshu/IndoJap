@@ -43,21 +43,24 @@ const DashboardSubmitBlog = () => {
   };
 
   const categories = [
-    "Food",
-    "Cultural",
-    "Industrial",
-    "Tools",
-    "Devotion",
     "Automotive",
-    "Health",
-    "Electronics",
-    "Sports",
-    "Computers",
-    "Education",
     "Beauty",
     "Books",
+    "Computers",
+    "Cultural",
+    "Devotion",
+    "Education",
+    "Electronics",
+    "Food",
+    "Health",
+    "Interaction",
+    "Industrial",
     "Lifestyle",
+    "Sports",
+    "Tools",
+    "Workshops"
   ];
+  
 
   const handleSubmit = async (e:any) => {
     e.preventDefault();

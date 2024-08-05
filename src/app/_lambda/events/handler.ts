@@ -83,7 +83,7 @@ export const GET: APIGatewayProxyHandlerV2 = async (
   try {
     const queryParams = event.queryStringParameters || {};
     const searchableFields = [
-      'title', 'desc', 'location', 'price', 'categories', 'tags', 'postContent'
+      'title', 'desc', 'location', 'price', 'categories', 'tags', 'postContent','eventId'
     ];
 
     let filterExpression = '';

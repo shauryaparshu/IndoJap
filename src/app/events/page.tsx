@@ -22,6 +22,7 @@ import LoadingPost from "@/components/LoadingPost/LoadingPost";
 import getAllEvents from "@/lib/getAllEvents";
 import { Suspense } from "react"; 
 import { eventNames } from "process";
+import moment from 'moment';
 
 export const revalidate = 0;
 const PageArchive = async ({}) => {
@@ -36,8 +37,8 @@ const PageArchive = async ({}) => {
     { name: "Most Discussed" },
     { name: "Most Viewed" },
   ];
-  const sortedEvents = [...events].sort((a, b) => new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime());
-
+  // const sortedEvents = [...events].sort((a, b) => new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime());
+  const sortedEvents: Event[] = [...events].sort((a, b) => moment(a.dateTime, 'ddd, MMM D • h:mm A').unix() - moment(b.dateTime, 'ddd, MMM D • h:mm A').unix());
 
   if (!events) {
     return <p>Events not found!</p>;
@@ -69,14 +70,17 @@ const PageArchive = async ({}) => {
 
       <div className="container pt-10 pb-16 lg:pb-28 lg:pt-20 space-y-16 lg:space-y-28">
         <div>
+       
           <div className="flex flex-col sm:justify-between sm:flex-row">
             <div className="flex space-x-2.5 rtl:space-x-reverse">
-              <ModalCategories categories={DEMO_CATEGORIES} />
-              <ModalTags tags={DEMO_TAGS} />
+            <Heading desc="Join the most exciting events in Japan hosted by the Indian community.">Events </Heading>
+          
+              {/* <ModalTags tags={DEMO_TAGS} /> */}
             </div>
             <div className="block my-4 border-b w-full border-neutral-300 dark:border-neutral-500 sm:hidden"></div>
             <div className="flex justify-end">
-              <ArchiveFilterListBox lists={FILTERS} />
+            <ModalCategories categories={DEMO_CATEGORIES} />
+              {/* <ArchiveFilterListBox lists={FILTERS} /> */}
             </div>
           </div>
 
@@ -124,3 +128,7 @@ const PageArchive = async ({}) => {
 };
 
 export default PageArchive;
+
+
+import { useRouter } from "next/router";import Heading from "@/components/Heading/Heading";
+

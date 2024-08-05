@@ -79,7 +79,7 @@ export const GET = async (
   try {
     const queryParams = event.queryStringParameters || {};
     const searchableFields = [
-      'title', 'content', 'category', 'author'
+      'title', 'content', 'category', 'author','blogId','createdAt'
     ];
 
     let filterExpression = '';

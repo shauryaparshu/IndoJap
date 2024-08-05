@@ -19,7 +19,7 @@ let demoRelated: PostDataType[] = DEMO_POSTS.filter(
 demoRelated = demoRelated.map((item, index) => ({
   ...item,
   href: (item.href + index) as Route,
-}));
+})); 
 
 let demoMoreFromAuthor: PostDataType[] = DEMO_POSTS.filter(
   (_, i) => i >= 14 && i < 18

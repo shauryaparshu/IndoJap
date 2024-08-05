@@ -1,5 +1,6 @@
 import { Route } from "@/routers/types";
-import __taxonomies from "./jsons/__taxonomies.json";
+import __taxonomies from "./jsons/categories.json";
+// import __taxonomies from "./jsons/__taxonomies.json";
 import { TaxonomyType } from "./types";
 
 const DEMO_CATEGORIES: TaxonomyType[] = __taxonomies.map((item) => ({
