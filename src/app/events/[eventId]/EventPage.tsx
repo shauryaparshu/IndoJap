@@ -65,7 +65,7 @@ const SingleHeader: FC<SingleHeaderProps> = ({
               hiddenCategories
               avatarRounded="rounded-full shadow-inner"
             /> */}
-            <SingleMetaAction2 />
+            <SingleMetaAction2/>
           </div>
         </div>
       </div>

@@ -8,9 +8,10 @@ import { DEMO_POSTS } from "@/data/posts";
 import { DEMO_CATEGORIES, DEMO_TAGS } from "@/data/taxonomies";
 import { PostDataType } from "@/data/types";
 import SectionAds from "@/components/Sections/SectionAds";
-import { Blog } from "@/data/types";
-import getAllBlogs from "@/lib/getAllBlogs";
+import { Event } from "@/data/types";
+import getAllEvents from "@/lib/getAllEvents";
 import AdBanner from "@/components/Sections/AdBanner";
+import SectionUpcommingEvents from "./SectionUpcommingEvents";
 
 export interface SidebarProps {
   className?: string;
@@ -20,15 +21,15 @@ const widgetPosts: PostDataType[] = DEMO_POSTS.filter((_, i) => i >7);
 
 
 export const Sidebar: FC<SidebarProps> = async ({ className = "space-y-6 " }) => {
-  const blogData = await getAllBlogs();
-  const blogs = blogData.Items;
-  if (!blogs) {
+  const eventData = await getAllEvents();
+  const events = eventData.Items;
+  if (!events) {
     return <p>Blogs not found!</p>;
   }
 
   return (
     <div className={`nc-SingleSidebar ${className}`}>
-      <WidgetPosts blogs={blogs} />
+      <SectionUpcommingEvents events={events}/>
        {/* <SectionAds /> */}
        <div className="mb-5">
           <AdBanner dataAdSlot="1366850428" dataAdFormat="auto" dataFullWidthResponsive={true} />

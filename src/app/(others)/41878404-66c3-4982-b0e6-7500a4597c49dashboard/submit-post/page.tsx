@@ -76,7 +76,6 @@ const DashboardSubmitPost = () => {
     "Books",
     "Computers",
     "Cultural",
-    "Devotion",
     "Education",
     "Electronics",
     "Food",
@@ -84,11 +83,11 @@ const DashboardSubmitPost = () => {
     "Interaction",
     "Industrial",
     "Lifestyle",
+    "Musical",
     "Sports",
     "Tools",
     "Workshops"
   ];
-  
 
   const formatDateTime = (e:any) => {
     const input = e.target.value;

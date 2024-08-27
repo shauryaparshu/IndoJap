@@ -2,121 +2,92 @@
     {
       "id": 1,
       "name": "Automotive",
-      "href": "/archive/the-demo-archive-slug",
       "thumbnail": "https://images.unsplash.com/photo-1611783398974-18d64fdad700?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-      "count": 16,
+      "href": "/events",
       "color": "pink"
     },
     {
       "id": 3,
       "name": "Beauty",
-      "href": "/archive/the-demo-archive-slug",
       "thumbnail": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmVhdXR5fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      "count": 27,
       "color": "red"
     },
     {
       "id": 4,
       "name": "Books",
-      "href": "/archive/the-demo-archive-slug",
       "thumbnail": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8Ym9va3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      "count": 25,
       "color": "pink"
     },
     {
       "id": 5,
       "name": "Computers",
-      "href": "/archive/the-demo-archive-slug",
       "thumbnail": "https://images.unsplash.com/photo-1532529867795-3c83442c1e5c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-      "count": 26,
       "color": "blue"
     },
     {
         "id": 2,
-        "name": "Cultural",
-        "href": "/archive/the-demo-archive-slug",
-        "thumbnail": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-        "count": 9,
-        "color": "green"
-      },
-      {
-        "id": 6,
-        "name": "Devotion",
-        "href": "/archive/the-demo-archive-slug",
+        "name": "Cultural", 
         "thumbnail": "https://images.unsplash.com/photo-1512658740823-0ebb97b3b86e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-        "count": 26,
-        "color": "blue"
+        "color": "green"
       },
     {
       "id": 7,
       "name": "Education",
-      "href": "/archive/the-demo-archive-slug",
       "thumbnail": "https://images.unsplash.com/photo-1485841890310-6a055c88698a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=550&q=80",
-      "count": 16,
       "color": "indigo"
     },
     {
       "id": 8,
       "name": "Electronics",
-      "href": "/archive/the-demo-archive-slug",
      "thumbnail": "https://images.unsplash.com/photo-1512686096451-a15c19314d59?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
-      "count": 7,
       "color": "red"
     },
     {
       "id": 9,
       "name": "Health",
-      "href": "/archive/the-demo-archive-slug",
       "thumbnail": "https://images.unsplash.com/photo-1546015018-8f2e2f225773?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
-      "count": 4,
-      "color": "purple"
+     "color": "purple"
     },
     {
       "id": 10,
       "name": "Interaction",
-      "href": "/archive/the-demo-archive-slug",
       "thumbnail": "https://images.unsplash.com/photo-1616504132588-0eeeb5213fc2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
-      "count": 20,
       "color": "indigo"
     },
     {
       "id": 11,
       "name": "Industrial",
-      "href": "/archive/the-demo-archive-slug",
       "thumbnail": "https://images.unsplash.com/photo-1491406213019-05b162a72c20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
-      "count": 15,
       "color": "yellow"
     },
     {
       "id": 12,
       "name": "Lifestyle",
-      "href": "/archive/the-demo-archive-slug",
       "thumbnail": "https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-      "count": 18,
       "color": "green"
+    },
+    {
+      "id": 6,
+      "name": "Musical",
+      "thumbnail": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      "color": "blue"
     },
     {
       "id": 13,
       "name": "Sports",
-      "href": "/archive/the-demo-archive-slug",
       "thumbnail": "https://images.unsplash.com/photo-1604935067269-27c7e8b36618?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-      "count": 15,
       "color": "green"
     },
     {
       "id": 14,
       "name": "Tools",
-      "href": "/archive/the-demo-archive-slug",
       "thumbnail": "https://images.unsplash.com/photo-1613442301239-ea2478101ea7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
-      "count": 21,
       "color": "pink"
     },
     {
         "id": 15,
         "name": "Workshops",
-        "href": "/archive/the-demo-archive-slug",
         "thumbnail": "https://images.unsplash.com/photo-1504992963429-56f2d62fbff0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
-        "count": 21,
         "color": "red"
       }
 

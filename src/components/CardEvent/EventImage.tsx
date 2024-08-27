@@ -21,15 +21,15 @@ const EventImage: FC<EventImageProps> = ({
   return (
     <div className={`nc-PostFeaturedMedia relative ${className}`}>
       <Image
-        alt="featured"
+        alt={event.title || "Event Image"}
         fill
         className="object-cover"
-        src={imageURL ? imageURL : defaultURL}
+        src={imageURL || defaultURL}
         sizes="(max-width: 600px) 480px, 800px"
       />
       <Link
         href={`/events/${eventId}`}
-        className={`block absolute inset-0 bg-black/20 transition-opacity opacity-0 group-hover:opacity-100`}
+        className="block absolute inset-0 bg-black/20 transition-opacity opacity-0 group-hover:opacity-100"
       />
     </div>
   );

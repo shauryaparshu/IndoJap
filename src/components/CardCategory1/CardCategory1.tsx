@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import NcImage from "@/components/NcImage/NcImage";
-import { TaxonomyType } from "@/data/types";
+import { TaxonomyType, Event } from "@/data/types";
 import Link from "next/link";
 
 export interface CardCategory1Props {
@@ -15,6 +15,8 @@ const CardCategory1: FC<CardCategory1Props> = ({
   taxonomy,
 }) => {
   const { count, name, href = "/", thumbnail } = taxonomy;
+  
+
   return (
     <Link
       href={href}
@@ -43,7 +45,7 @@ const CardCategory1: FC<CardCategory1Props> = ({
             size === "large" ? "text-sm" : "text-xs"
           } block mt-[2px] text-neutral-500 dark:text-neutral-400`}
         >
-          {count} Articles
+          {count} Event
         </span>
       </div>
     </Link>

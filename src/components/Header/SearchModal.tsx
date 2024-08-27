@@ -162,7 +162,7 @@ const SearchModal: FC<Props> = ({ renderTrigger }) => {
                       static
                       className="max-h-80 scroll-py-10 scroll-pb-2 space-y-4 overflow-y-auto p-4 pb-2"
                     >
-                      {filteredPosts.length > 0 && (
+                      {/* {filteredPosts.length > 0 && (
                         <li>
                           <h2 className="text-xs font-semibold text-gray-900">
                             Posts
@@ -266,7 +266,7 @@ const SearchModal: FC<Props> = ({ renderTrigger }) => {
                             ))}
                           </ul>
                         </li>
-                      )}
+                      )} */}
                     </Combobox.Options>
                   )}
 
@@ -280,10 +280,10 @@ const SearchModal: FC<Props> = ({ renderTrigger }) => {
                         Help with searching
                       </p>
                       <p className="mt-2 text-gray-500">
-                        Use this tool to quickly search for users and projects
+                        Use this tool to quickly search for Events and Blogs
                         across our entire platform. You can also use the search
                         modifiers found in the footer below to limit the results
-                        to just users or projects.
+                        to just events or blogs.
                       </p>
                     </div>
                   )}
@@ -321,7 +321,7 @@ const SearchModal: FC<Props> = ({ renderTrigger }) => {
                     </kbd>{" "}
                     <span className="sm:hidden">for projects,</span>
                     <span className="hidden sm:inline">
-                      to access projects,
+                      to access Events ,
                     </span>
                     <kbd
                       className={classNames(
@@ -333,7 +333,7 @@ const SearchModal: FC<Props> = ({ renderTrigger }) => {
                     >
                       &gt;
                     </kbd>{" "}
-                    for users,{" "}
+                    for blogs,{" "}
                     <kbd
                       className={classNames(
                         "mx-1 flex h-5 w-5 items-center justify-center rounded border bg-white font-semibold sm:mx-2",
@@ -344,14 +344,15 @@ const SearchModal: FC<Props> = ({ renderTrigger }) => {
                     >
                       ?
                     </kbd>{" "}
-                    for help, or{" "}
-                    <Link
+                    
+                    for help.
+                    {/* <Link
                       href={"/search"}
                       className="mx-1 flex h-5 px-1.5 items-center justify-center rounded border bg-white sm:mx-2 border-primary-6000 text-neutral-900"
                       onClick={() => setOpen(false)}
                     >
                       Go to search page
-                    </Link>{" "}
+                    </Link>{" "} */}
                   </div>
                 </Combobox>
               </Dialog.Panel>

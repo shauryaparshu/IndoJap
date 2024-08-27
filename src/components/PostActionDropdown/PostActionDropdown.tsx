@@ -20,11 +20,11 @@ const PostActionDropdown: FC<PostActionDropdownProps> = ({
   dropdownPositon = "down",
 }) => {
   let actions: NcDropDownItem[] = [
-    {
-      id: "copylink",
-      name: "Copy link",
-      icon: <FaLink className="w-6 h-6" />,
-    },
+    // {
+    //   id: "copylink",
+    //   name: "Copy link",
+    //   icon: <FaLink className="w-6 h-6" />,
+    // },
     // {
     //   id: "commentThisArticle",
     //   name: "Comment this article",

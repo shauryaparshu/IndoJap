@@ -1,51 +1,60 @@
-// import { useRouter } from "next/router";
+import { Suspense } from 'react';
 import ModalCategories from "./ModalCategories";
-import ModalTags from "./ModalTags";
-import { DEMO_POSTS } from "@/data/posts";
-import { Event } from "@/data/types";
-import { PostDataType } from "@/data/types";
-import { DEMO_CATEGORIES, DEMO_TAGS } from "@/data/taxonomies";
-import { DEMO_AUTHORS } from "@/data/authors";
-import Pagination from "@/components/Pagination/Pagination";
-import ButtonPrimary from "@/components/Button/ButtonPrimary";
-import ArchiveFilterListBox from "@/components/ArchiveFilterListBox/ArchiveFilterListBox";
-import SectionSubscribe2 from "@/components/SectionSubscribe2/SectionSubscribe2";
-// import Card11 from "@/components/Card11/Card11";
+import { Event, TaxonomyType } from "@/data/types";
+import { DEMO_CATEGORIES } from "@/data/taxonomies";
 import Eventcard from "@/components/CardEvent/Eventcard";
-import BackgroundSection from "@/components/BackgroundSection/BackgroundSection";
-import SectionGridCategoryBox from "@/components/SectionGridCategoryBox/SectionGridCategoryBox";
-import ButtonSecondary from "@/components/Button/ButtonSecondary";
-import SectionSliderNewAuthors from "@/components/SectionSliderNewAthors/SectionSliderNewAuthors";
 import Image from "next/image";
-// import useDataFetching from "@/hooks/useDataFetching";
 import LoadingPost from "@/components/LoadingPost/LoadingPost";
-import getAllEvents from "@/lib/getAllEvents";
-import { Suspense } from "react"; 
-import { eventNames } from "process";
+import Heading from "@/components/Heading/Heading";
 import moment from 'moment';
+import getAllEvents from '@/lib/getAllEvents';
 
-export const revalidate = 0;
-const PageArchive = async ({}) => {
-  // const { loading } = useDataFetching();
-  const eventData = await getAllEvents();
-  const events = eventData.Items;
+type PageArchiveProps = {
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
-  const FILTERS = [
-    { name: "Most Recent" },
-    { name: "Curated by Admin" },
-    { name: "Most Appreciated" },
-    { name: "Most Discussed" },
-    { name: "Most Viewed" },
-  ];
-  // const sortedEvents = [...events].sort((a, b) => new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime());
-  const sortedEvents: Event[] = [...events].sort((a, b) => moment(a.dateTime, 'ddd, MMM D • h:mm A').unix() - moment(b.dateTime, 'ddd, MMM D • h:mm A').unix());
+export default async function PageArchive({ searchParams }: PageArchiveProps) {
+  const category = typeof searchParams.category === 'string' ? searchParams.category : '';
+  const allEvents = await getAllEvents();
 
-  if (!events) {
-    return <p>Events not found!</p>;
-  }
+  const events = category
+    ? allEvents.Items.filter((event: Event) => event.categories.includes(category))
+    : allEvents.Items;
+
+  const currentDateTime = moment();
+
+  // Sorting events by date and time in ascending order (oldest first)
+  const sortEventsByDateAsc = (events: Event[]) =>
+    events.sort((a, b) =>
+      moment(a.dateTime, 'ddd, MMM D • h:mm A').unix() - moment(b.dateTime, 'ddd, MMM D • h:mm A').unix()
+    );
+
+  // Sorting events by date and time in descending order (newest first)
+  const sortEventsByDateDesc = (events: Event[]) =>
+    events.sort((a, b) =>
+      moment(b.dateTime, 'ddd, MMM D • h:mm A').unix() - moment(a.dateTime, 'ddd, MMM D • h:mm A').unix()
+    );
+
+  const pastEvents = sortEventsByDateDesc(
+    events.filter((event: { dateTime: moment.MomentInput; }) =>
+      moment(event.dateTime, 'ddd, MMM D • h:mm A').isBefore(currentDateTime)
+    )
+  );
+
+  const todayEvents = sortEventsByDateAsc(
+    events.filter((event: { dateTime: moment.MomentInput; }) =>
+      moment(event.dateTime, 'ddd, MMM D • h:mm A').isSame(currentDateTime, 'day')
+    )
+  );
+
+  const upcomingEvents = sortEventsByDateAsc(
+    events.filter((event: { dateTime: moment.MomentInput; }) =>
+      moment(event.dateTime, 'ddd, MMM D • h:mm A').isAfter(currentDateTime)
+    )
+  );
 
   return (
-    <div className={`nc-PageArchive`}>
+    <div className="nc-PageArchive">
       {/* HEADER */}
       <div className="w-full px-2 xl:max-w-screen-2xl mx-auto pt-2">
         <div className="relative aspect-w-16 aspect-h-13 sm:aspect-h-9 lg:aspect-h-8 xl:aspect-h-5 rounded-3xl md:rounded-[40px] overflow-hidden z-0">
@@ -66,69 +75,59 @@ const PageArchive = async ({}) => {
           </div>
         </div>
       </div>
-      {/* ====================== END HEADER ====================== */}
 
       <div className="container pt-10 pb-16 lg:pb-28 lg:pt-20 space-y-16 lg:space-y-28">
+        {/* Event Sections */}
         <div>
-       
           <div className="flex flex-col sm:justify-between sm:flex-row">
             <div className="flex space-x-2.5 rtl:space-x-reverse">
-            <Heading desc="Join the most exciting events in Japan hosted by the Indian community.">Events </Heading>
-          
-              {/* <ModalTags tags={DEMO_TAGS} /> */}
+              <Heading desc="Join the most exciting events in Japan hosted by the Indian community.">Events </Heading>
             </div>
             <div className="block my-4 border-b w-full border-neutral-300 dark:border-neutral-500 sm:hidden"></div>
             <div className="flex justify-end">
-            <ModalCategories categories={DEMO_CATEGORIES} />
-              {/* <ArchiveFilterListBox lists={FILTERS} /> */}
+              <ModalCategories 
+                categories={DEMO_CATEGORIES}
+                selectedCategory={category}
+              />
             </div>
           </div>
 
-          {/* LOOP ITEMS */}
-          {/* {loading && <LoadingPost />} */}
           <Suspense fallback={<LoadingPost />}>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 mt-8 lg:mt-10">
-              {sortedEvents.map((event: Event) => (
-                <Eventcard key={event.eventId} event={event} />
-              ))}
-            </div>
+            {todayEvents.length > 0 && (
+              <div>
+                <h3 className="text-xl font-semibold mt-8">Today's Events</h3>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 mt-4">
+                  {todayEvents.map((event: Event) => (
+                    <Eventcard key={event.eventId} event={event} />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {upcomingEvents.length > 0 && (
+              <div>
+                <h3 className="text-xl font-semibold mt-8">Upcoming Events</h3>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 mt-4">
+                  {upcomingEvents.map((event: Event) => (
+                    <Eventcard key={event.eventId} event={event} />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {pastEvents.length > 0 && (
+              <div>
+                <h3 className="text-xl font-semibold mt-8">Past Events</h3>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 mt-4">
+                  {pastEvents.map((event: Event) => (
+                    <Eventcard key={event.eventId} event={event} />
+                  ))}
+                </div>
+              </div>
+            )}
           </Suspense>
-
-          {/* PAGINATIONS */}
-          {/* <div className="flex flex-col mt-12 lg:mt-16 space-y-5 sm:space-y-0 sm:space-x-3 sm:flex-row sm:justify-between sm:items-center">
-            <Pagination />
-            <ButtonPrimary>Show me more</ButtonPrimary>
-          </div> */}
         </div>
-
-        {/* MORE SECTIONS */}
-        {/* === SECTION 5 === */}
-        {/* <div className="relative py-16">
-          <BackgroundSection />
-          <SectionGridCategoryBox
-            categories={DEMO_CATEGORIES.filter((_, i) => i < 10)}
-          />
-          <div className="text-center mx-auto mt-10 md:mt-16">
-            <ButtonSecondary loading>Show me more</ButtonSecondary>
-          </div>
-        </div> */}
-
-        {/* === SECTION 5 === */}
-        {/* <SectionSliderNewAuthors
-          heading="Top elite authors"
-          subHeading="Discover our elite writers"
-          authors={DEMO_AUTHORS.filter((_, i) => i < 10)}
-        /> */}
-
-        {/* SUBCRIBES */}
-        {/* <SectionSubscribe2 /> */}
       </div>
     </div>
   );
-};
-
-export default PageArchive;
-
-
-import { useRouter } from "next/router";import Heading from "@/components/Heading/Heading";
-
+}

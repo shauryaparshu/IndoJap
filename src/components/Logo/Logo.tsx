@@ -1,7 +1,7 @@
 import React from "react";
 import logoImg from "@/images/logo.png";
 import logoLightImg from "@/images/logo-light.png";
-import IJGLogo from "@/images/IJG-logo.png";
+import IJGLogo from "@/images/indiajap-logo.png";
 import Link from "next/link";
 import LogoSvg from "./LogoSvg";
 import Image, { StaticImageData } from "next/image";
@@ -23,7 +23,7 @@ const Logo: React.FC<LogoProps> = ({
       {/* THIS USE FOR MY MULTI DEMO */}
       {/* IF YOU ARE MY CLIENT. PLEASE DELETE THIS CODE AND USE YOUR IMAGE PNG BY BELOW CODE */}
      {/* <LogoSvg/> */}
-     <Image className="mx-auto w-20 h-auto" src={IJGLogo} alt="India-Japan-Guide" />
+     <Image className="mx-auto w-16 h-auto" src={IJGLogo} alt="India-Japan-Guide" />
      {/* <img
               src={IJGLogo}
               alt="IJG Logo"

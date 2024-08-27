@@ -20,9 +20,9 @@ const ModalCategories: FC<ModalCategoriesProps> = ({ categories, selectedCategor
   const handleCategoryChange = (category: string) => {
     if (category === selectedCategory) {
       // If the same category is selected, remove the filter
-      router.push('/events');
+      router.push('/blogs');
     } else {
-      router.push(`/events?category=${category}`);
+      router.push(`/blogs?category=${category}`);
     }
     setIsModalOpen(false);  // Close the modal
   };

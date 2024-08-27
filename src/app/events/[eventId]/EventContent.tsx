@@ -4,6 +4,7 @@ import React, { FC, useEffect, useRef, useState } from "react";
 import { ArrowUpIcon } from "@heroicons/react/24/solid";
 import SectionAds from "@/components/Sections/SectionAds";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
+import AdBanner from "@/components/Sections/AdBanner";
 
 const EventContent: FC<{ event: { postContent: string } }> = ({ event }) => {
   const endedAnchorRef = useRef<HTMLDivElement>(null);
@@ -69,7 +70,10 @@ const EventContent: FC<{ event: { postContent: string } }> = ({ event }) => {
 </div>
 
 
-        <SectionAds />
+        {/* <SectionAds /> */}
+        <div className="mb-5">
+          <AdBanner dataAdSlot="1366850428" dataAdFormat="auto" dataFullWidthResponsive={true} />
+          </div>
         <br />
         <div ref={endedAnchorRef}></div>
       </div>

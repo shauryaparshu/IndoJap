@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import SingleContent from "../../blogs/beyond_mext/SingleContent";
+// import SingleContent from "../../blogs/[blogId]/singleContent
 import SingleRelatedPosts from "../../blogs/SingleRelatedPosts";
 
 const layout = ({ children }: { children: ReactNode }) => {
@@ -9,7 +9,7 @@ const layout = ({ children }: { children: ReactNode }) => {
 
       {/* SINGLE MAIN CONTENT */}
       <div className="container mt-10">
-        <SingleContent />
+        {/* <SingleContent /> */}
       </div>
 
       {/* RELATED POSTS */}

@@ -1,22 +1,32 @@
 import React, { FC, ReactNode } from "react";
 import Image from "next/image";
 import SingleHeader from "@/app/(singles)/SingleHeader";
-import SingleContent from "./beyond_mext/SingleContent";
 import SingleRelatedPosts from "./SingleRelatedPosts";
 import { Sidebar } from "./Sidebar";
-import SectionLatestPosts from "@/components/Sections/SectionLatestPosts";
+import SectionLatestBlogs from "./SectionLatestBlogs";
 import BackgroundSection from "@/components/BackgroundSection/BackgroundSection";
 import getAllblogs from "@/lib/getAllBlogs";
+import { Blog } from "@/data/types";
 
 // export interface PageSingleTemplate3Props {
 //   children: ReactNode;
 // }
+type PageSingleTemplate3 = {
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
 export const revalidate = 0;
 
 // const PageSingleTemplate3: FC<PageSingleTemplate3Props> = ({ children }) => {
-const PageSingleTemplate3 = async ({}) => {
+const PageSingleTemplate3 = async ({ searchParams }: PageSingleTemplate3) => {
+  
+  const category = typeof searchParams.category === 'string' ? searchParams.category : '';
+  
   const blogData = await getAllblogs();
-  const blogs = blogData.Items;
+  const blogs = category
+    ? blogData.Items.filter((blog: Blog) => blog.category.includes(category))
+    : blogData.Items;
+
 
   if (!blogs) {
     return <p>Blogs not found!</p>;
@@ -46,7 +56,7 @@ const PageSingleTemplate3 = async ({}) => {
         <div className="container relative">
           <div className="relative py-16">
             <BackgroundSection />
-            <SectionLatestPosts blogs={blogs} className="pb-16 lg:pb-28" />
+            <SectionLatestBlogs blogs={blogs} className="pb-16 lg:pb-28" category={category} />
           </div>
         </div>
       </div>

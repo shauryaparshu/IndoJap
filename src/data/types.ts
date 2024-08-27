@@ -19,6 +19,17 @@ export interface TaxonomyType {
   color?: TwMainColor | string;
   taxonomy: "category" | "tag";
 }
+export interface CategoryType {
+  id: string | number;
+  name: string;
+  count?: number;
+  href: Route;
+  thumbnail?: string | StaticImageData;
+  desc?: string;
+  color?: TwMainColor | string;
+  taxonomy: "category" 
+}
+
 
 export interface PostAuthorType {
   id: string | number;

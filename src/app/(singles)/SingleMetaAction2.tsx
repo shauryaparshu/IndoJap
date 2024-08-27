@@ -32,16 +32,16 @@ const SingleMetaAction2: FC<SingleMetaAction2Props> = ({ className = "" }) => {
 
   const shareItems = [
     {
-      id: "facebook",
-      name: "Facebook",
+      id: "whatsapp",
+      name: "WhatsApp",
       icon: (
-        <FacebookShareButton
+        <WhatsappShareButton
           url={shareUrl}
           className="w-full h-full flex items-center justify-center"
         >
-          <FaFacebook className="text-blue-600" />
-          <span className="ml-2">Facebook</span>
-        </FacebookShareButton>
+          <FaWhatsapp className="text-green-500" />
+          <span className="ml-2">WhatsApp</span>
+        </WhatsappShareButton>
       ),
     },
     {
@@ -58,16 +58,16 @@ const SingleMetaAction2: FC<SingleMetaAction2Props> = ({ className = "" }) => {
       ),
     },
     {
-      id: "whatsapp",
-      name: "WhatsApp",
+      id: "facebook",
+      name: "Facebook",
       icon: (
-        <WhatsappShareButton
+        <FacebookShareButton
           url={shareUrl}
           className="w-full h-full flex items-center justify-center"
         >
-          <FaWhatsapp className="text-green-500" />
-          <span className="ml-2">WhatsApp</span>
-        </WhatsappShareButton>
+          <FaFacebook className="text-blue-600" />
+          <span className="ml-2">Facebook</span>
+        </FacebookShareButton>
       ),
     },
     {

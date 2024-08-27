@@ -36,17 +36,3 @@ const AdBanner: React.FC<AdBannerProps> = ({ dataAdSlot, dataAdFormat, dataFullW
 }
 
 export default AdBanner;
-
-
-{/* <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7913230536929786"
-     crossorigin="anonymous"></script>
-<!-- BottomBanner -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7913230536929786"
-     data-ad-slot="1366850428"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script> */}

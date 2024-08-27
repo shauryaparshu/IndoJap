@@ -48,7 +48,6 @@ const DashboardSubmitBlog = () => {
     "Books",
     "Computers",
     "Cultural",
-    "Devotion",
     "Education",
     "Electronics",
     "Food",
@@ -56,6 +55,7 @@ const DashboardSubmitBlog = () => {
     "Interaction",
     "Industrial",
     "Lifestyle",
+    "Musical",
     "Sports",
     "Tools",
     "Workshops"

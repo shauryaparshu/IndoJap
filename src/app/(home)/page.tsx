@@ -1,32 +1,7 @@
 import React, { Suspense } from "react";
-import { DEMO_CATEGORIES, DEMO_TAGS } from "@/data/taxonomies";
-import { DEMO_POSTS, DEMO_POSTS_AUDIO } from "@/data/posts";
 import SectionHero from "@/components/SectionHero/SectionHero";
 import rightImg from "@/images/indojap_logo.png";
-import Vector1 from "@/images/Vector1.png";
-import SectionSubscribe2 from "@/components/SectionSubscribe2/SectionSubscribe2";
-import BackgroundSection from "@/components/BackgroundSection/BackgroundSection";
-import SectionSliderNewAuthors from "@/components/SectionSliderNewAthors/SectionSliderNewAuthors";
-import { DEMO_AUTHORS } from "@/data/authors";
-import SectionBecomeAnAuthor from "@/components/SectionBecomeAnAuthor/SectionBecomeAnAuthor";
-import SectionGridCategoryBox from "@/components/SectionGridCategoryBox/SectionGridCategoryBox";
-import Image from "next/image";
-import SectionMagazine5 from "@/components/Sections/SectionMagazine5";
-import SectionSliderPosts from "@/components/Sections/SectionSliderPosts";
-import SectionAds from "@/components/Sections/SectionAds";
-import SectionMagazine8 from "@/components/Sections/SectionMagazine8";
-import SectionMagazine9 from "@/components/Sections/SectionMagazine9";
-import SectionVideos from "@/components/Sections/SectionVideos";
 import SectionLatestPosts from "@/components/Sections/SectionLatestPosts";
-import ModalCategories from "@/app/(archives)/ModalCategories";
-import ModalTags from "@/app/(archives)/ModalTags";
-import ArchiveFilterListBox from "@/components/ArchiveFilterListBox/ArchiveFilterListBox";
-import Pagination from "@/components/Pagination/Pagination";
-import ButtonPrimary from "@/components/Button/ButtonPrimary";
-import Card11 from "@/components/Card11/Card11";
-import HeaderFilter from "@/components/Sections/HeaderFilter";
-import Heading from "@/components/Heading/Heading";
-// import useDataFetching from "@/hooks/useDataFetching";
 import LoadingPost from "@/components/LoadingPost/LoadingPost";
 import Eventcard from "@/components/CardEvent/Eventcard";
 import getAllEvents from "@/lib/getAllEvents";
@@ -34,41 +9,62 @@ import { Event } from "@/data/types";
 import getAllBlogs from "@/lib/getAllBlogs";
 import AdBanner from "@/components/Sections/AdBanner";
 import moment from 'moment';
+import Heading from "@/components/Heading/Heading";
+import ButtonPrimary from "@/components/Button/ButtonPrimary";
+import BackgroundSection from "@/components/BackgroundSection/BackgroundSection";
 
-// DEMO DATA
-const POSTS = DEMO_POSTS;
-const MAGAZINE1_POSTS = POSTS.filter((_, i) => i >= 0 && i < 8);
 export const revalidate = 0;
-const PageHomeDemo3: React.FC = async () => {
-  // const { loading } = useDataFetching();
-  // const posts: PostDataType[] = DEMO_POSTS.filter((_, i) => i < 16);
-  const FILTERS = [
-    { name: "Most Recent" },
-    { name: "Curated by Admin" },
-    { name: "Most Appreciated" },
-    { name: "Most Discussed" },
-    { name: "Most Viewed" },
-  ];
-  // const eventData = await getAllEvents();
-  // const events = eventData.Items;
 
-  // const blogData = await getAllBlogs();
-  // const blogs = blogData.Items;
-  
+const PageHomeDemo3: React.FC = async () => {
   const eventData = await getAllEvents();
-  const events = eventData.Items.slice(0, 4); // Limit to 4 events
+  const allEvents = eventData.Items;
 
   const blogData = await getAllBlogs();
-  const blogs = blogData.Items.slice(0, 4);
-  const sortedEvents: Event[] = [...events].sort((a, b) => moment(a.dateTime, 'ddd, MMM D • h:mm A').unix() - moment(b.dateTime, 'ddd, MMM D • h:mm A').unix());
+  const blogs = blogData.Items.slice(0, 4); // Limit to 4 blogs
+
+  const currentDateTime = moment();
+
+  // Sorting events by date and time in ascending order (oldest first)
+  const sortEventsByDateAsc = (events: Event[]) =>
+    events.sort((a, b) =>
+      moment(a.dateTime, 'ddd, MMM D • h:mm A').unix() - moment(b.dateTime, 'ddd, MMM D • h:mm A').unix()
+    );
+
+  // Sorting events by date and time in descending order (newest first)
+  const sortEventsByDateDesc = (events: Event[]) =>
+    events.sort((a, b) =>
+      moment(b.dateTime, 'ddd, MMM D • h:mm A').unix() - moment(a.dateTime, 'ddd, MMM D • h:mm A').unix()
+    );
+
+  const pastEvents = sortEventsByDateDesc(
+    allEvents.filter((event: Event) =>
+      moment(event.dateTime, 'ddd, MMM D • h:mm A').isBefore(currentDateTime)
+    )
+  );
+
+  const todayEvents = sortEventsByDateAsc(
+    allEvents.filter((event: Event) =>
+      moment(event.dateTime, 'ddd, MMM D • h:mm A').isSame(currentDateTime, 'day')
+    )
+  );
+
+  const upcomingEvents = sortEventsByDateAsc(
+    allEvents.filter((event: Event) =>
+      moment(event.dateTime, 'ddd, MMM D • h:mm A').isAfter(currentDateTime)
+    )
+  );
+
+  // Limit the number of events displayed
+  const limitedPastEvents = pastEvents.slice(0, 4);
+  const limitedTodayEvents = todayEvents.slice(0, 4);
+  const limitedUpcomingEvents = upcomingEvents.slice(0, 4);
 
   return (
     <div className="nc-PageHomeDemo3 relative">
       <div className="container relative">
-        {/* hero section */}
+        {/* Hero Section */}
         <SectionHero
           rightImg={rightImg}
-          // className="pt-10 pb-16 md:py-16 lg:pb-28 lg:pt-20"
           heading={
             <span>
               Discover Vibrant Indian Events in
@@ -81,77 +77,76 @@ const PageHomeDemo3: React.FC = async () => {
           subHeading="Join the Celebration: Explore a world of Indian culture, traditions, and experiences right here in Japan!"
         />
 
-        {/* Events section */}
+        {/* Events Section */}
         <div>
-          {/* <h2 className="font-semibold text-4xl"> Events </h2>
-          <span className="mt-2 md:mt-3 font-normal block text-base sm:text-xl text-neutral-500 dark:text-neutral-400">
-          Join the most exciting events in Japan hosted by the Indian community.
-          </span> */}
           <br />
           <div className="flex flex-col sm:justify-between sm:flex-row">
-            
-        <Heading desc="Join the most exciting events in Japan hosted by the Indian community.">Events </Heading>
-            <div className="flex space-x-2.5 rtl:space-x-reverse">
-              {/* <ModalCategories categories={DEMO_CATEGORIES} /> */}
-               {/* <ModalTags tags={DEMO_TAGS} />  */}
-            </div>
-            <div className="block my-4 border-b w-full border-neutral-300 dark:border-neutral-500 sm:hidden"></div>
-            <div className="flex justify-end">
-            {/* <ModalTags tags={DEMO_TAGS} />  */}
-            
-            {/* categories */}
-            {/* <ModalCategories categories={DEMO_CATEGORIES} /> */}
-            
-              {/* <ArchiveFilterListBox lists={FILTERS} /> */}
-            </div>
+            <Heading desc="Join the most exciting events in Japan hosted by the Indian community.">
+              Events
+            </Heading>
           </div>
 
-          {/* LOOP ITEMS */}
-          {/* {loading && <LoadingPost />} */}
           <Suspense fallback={<LoadingPost />}>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 mt-8 lg:mt-10">
-              {sortedEvents.map((event: Event) => (
-                <Eventcard key={event.eventId} event={event} />
-              ))}
-            </div>
-          </Suspense>
-          {/* Show more events button */}
-          {/* <div className="flex justify-center mt-8">
-            <ButtonPrimary href="/events">Show more events</ButtonPrimary>
-          </div> */}
+            {/* Today's Events */}
+            {limitedTodayEvents.length > 0 && (
+              <div>
+                <h3 className="text-xl font-semibold mt-8">Today's Events</h3>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 mt-4">
+                  {limitedTodayEvents.map((event: Event) => (
+                    <Eventcard key={event.eventId} event={event} />
+                  ))}
+                </div>
+              </div>
+            )}
 
-          {/* PAGINATIONS */}
-          <div className="flex flex-col mt-12 lg:mt-16 space-y-5 sm:space-y-0 sm:space-x-3 sm:flex-row sm:justify-between sm:items-center">
-            {/* <Pagination /> */}
-            <ButtonPrimary href="/events">Show more events</ButtonPrimary>
+            {/* Upcoming Events */}
+            {limitedUpcomingEvents.length > 0 && (
+              <div>
+                <h3 className="text-xl font-semibold mt-8">Upcoming Events</h3>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 mt-4">
+                  {limitedUpcomingEvents.map((event: Event) => (
+                    <Eventcard key={event.eventId} event={event} />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Past Events */}
+            {/* {limitedPastEvents.length > 0 && (
+              <div>
+                <h3 className="text-xl font-semibold mt-8">Past Events</h3>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 mt-4">
+                  {limitedPastEvents.map((event: Event) => (
+                    <Eventcard key={event.eventId} event={event} />
+                  ))}
+                </div>
+              </div>
+            )} */}
+          </Suspense>
+
+          {/* Show more events button */}
+          <div className="flex justify-center mt-8">
+            <ButtonPrimary href="/events">Show more events </ButtonPrimary>
           </div>
         </div>
         <br />
 
-        {/* Articles section */}
-        {/* <div className="relative py-16">
-          <BackgroundSection />
-          <SectionMagazine5 heading="Latest Articles" posts={MAGAZINE1_POSTS} />
-        </div> */}
-
         <div className="relative py-16">
           <BackgroundSection />
+          
           <SectionLatestPosts blogs={blogs} className="pb-16 lg:pb-28" />
-          <div className="flex flex-col mt-8 lg:mt-12 space-y-5 sm:space-y-0 sm:space-x-3 sm:flex-row sm:justify-between sm:items-center">
-             <ButtonPrimary href="/blogs">Show more blogs</ButtonPrimary>
+          <div className="flex justify-center mt-8">
+            <ButtonPrimary href="/blogs">Show more blogs</ButtonPrimary>
           </div>
+        </div>
 
-        </div>
-         
-        {/* <SectionAds /> */}
         <div className="mb-5">
-        <AdBanner dataAdSlot="1366850428" dataAdFormat="auto" dataFullWidthResponsive={true}/>
-        </div>
-        {/* NewsLetter */}
-        {/* <SectionSubscribe2 className="pb-16 lg:pb-28" /> */}
+          <AdBanner dataAdSlot="1366850428" dataAdFormat="auto" dataFullWidthResponsive={true} />
+          </div>
       </div>
     </div>
   );
 };
 
 export default PageHomeDemo3;
+
